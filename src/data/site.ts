@@ -50,15 +50,15 @@ export const stats = [
 
 // The three master credentials shown as the "first & only" proof point.
 export const masterBadges = [
-  { logo: "ice-ac", name: "ICE-AC", full: "ICAgile Certified Expert in Agile Coaching" },
-  { logo: "mcc", name: "MCC", full: "Master Certified Coach, International Coaching Federation" },
-  { logo: "mind-master", name: "MIND Master Practitioner", full: "MyBrain Indicator of Neurological Dominance" },
+  { logo: "mcc", name: "Master Certified Coach", by: "MCC by ICF", full: "Master Certified Coach (MCC) by ICF" },
+  { logo: "ice-ac", name: "IC-Agile Expert in Agile Coaching", by: "ICE-AC by IC-Agile", full: "IC-Agile Expert in Agile Coaching (ICE-AC) by IC-Agile" },
+  { logo: "mind-master", name: "MiND Master Practitioner", by: "by MyBrain", full: "MiND Master Practitioner by MyBrain" },
 ];
 
 export const masterCredentials = [
-  { logo: "ice-ac", name: "ICE-AC", full: "ICAgile Certified Expert in Agile Coaching" },
-  { logo: "mcc", name: "MCC", full: "Master Certified Coach, from ICF (International Coaching Federation)" },
-  { logo: "mind-master", name: "MIND Master Practitioner", full: "MyBrain Indicator of Neurological Dominance" },
+  { logo: "mcc", name: "MCC", full: "Master Certified Coach (MCC by ICF)" },
+  { logo: "ice-ac", name: "ICE-AC", full: "IC-Agile Expert in Agile Coaching (ICE-AC by IC-Agile)" },
+  { logo: "mind-master", name: "MiND Master Practitioner", full: "MiND Master Practitioner (by MyBrain)" },
   { logo: "ecpc", name: "ECPC", full: "Erickson Certified Professional Coach, Erickson Coaching International" },
   { logo: "cca-coach", name: "CMC", full: "Certified Master Coach, Corporate Coach Academy" },
   { logo: "", name: "Stakeholder Centered Coaching", full: "Marshall Goldsmith" },
