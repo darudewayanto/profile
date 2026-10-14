@@ -74,7 +74,7 @@ import city from "../assets/photos/city.png";
         <ul class="list" role="list">
           {masterCredentials.map((c) => (
             <li>
-              {c.logo ? <Image src={badgeImg[c.logo]} alt="" width={crispWidth(badgeImg[c.logo], 64)} class="badge-img" /> : <span class="ph" aria-hidden="true">MG</span>}
+              {c.logo ? <Image src={badgeImg[c.logo]} alt="" width={crispWidth(badgeImg[c.logo], c.wide ? 80 : 64)} class="badge-img" /> : <span class="ph" aria-hidden="true">MG</span>}
               <span><strong>{c.name}</strong><br /><span class="muted small">{c.full}</span></span>
             </li>
           ))}

@@ -61,7 +61,7 @@ export const masterCredentials = [
   { logo: "mind-master", name: "MiND Master Practitioner", full: "MiND Master Practitioner (by MyBrain)" },
   { logo: "ecpc", name: "ECPC", full: "Erickson Certified Professional Coach, Erickson Coaching International" },
   { logo: "cca-coach", name: "CMC", full: "Certified Master Coach, Corporate Coach Academy" },
-  { logo: "", name: "Stakeholder Centered Coaching", full: "Marshall Goldsmith" },
+  { logo: "marshall-goldsmith", name: "Stakeholder Centered Coaching", full: "Marshall Goldsmith", wide: true },
 ];
 
 export const accreditedMembers = [

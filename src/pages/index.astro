@@ -159,7 +159,7 @@ import award100 from "../assets/photos/award-100-best.png";
           {masterCredentials.map((c) => (
             <li>
               {c.logo
-                ? <Image src={badgeImg[c.logo]} alt={c.full} width={crispWidth(badgeImg[c.logo], 96)} class="badge-img" />
+                ? <Image src={badgeImg[c.logo]} alt={c.full} width={crispWidth(badgeImg[c.logo], c.wide ? 190 : 96)} class:list={["badge-img", { wide: c.wide }]} />
                 : <span class="txt-badge">Marshall<br />Goldsmith</span>}
               <strong>{c.name}</strong>
               <span>{c.full}</span>
@@ -333,6 +333,7 @@ import award100 from "../assets/photos/award-100-best.png";
   .cred-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem 1.5rem; }
   .cred-row li { display: grid; justify-items: center; text-align: center; align-content: start; gap: 0.35rem; }
   .cred-row :global(img), .txt-badge { height: 96px; margin-bottom: 0.8rem; }
+  .cred-row :global(img.wide) { height: auto; width: 190px; max-width: 100%; margin-block: 12px calc(0.8rem + 11px); }
   .txt-badge { display: grid; place-items: center; width: 96px; border-radius: 50%; border: 1px solid var(--line-strong); font-family: var(--serif); font-size: 0.78rem; line-height: 1.25; }
   .cred-row strong { font-size: var(--fs-small); font-weight: 600; }
   .cred-row span:not(.txt-badge) { font-size: 0.75rem; color: var(--muted); line-height: 1.5; max-width: 22ch; }
