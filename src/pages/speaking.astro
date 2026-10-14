@@ -1,0 +1,94 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import Image from "../components/Img.astro";
+import Icon from "../components/Icon.astro";
+import CtaBand from "../components/CtaBand.astro";
+import { speakingTopics, speakingFormats, wa, awards } from "../data/site";
+import speaking from "../assets/photos/daru-speaking.jpg";
+import entStage from "../assets/photos/daru-entrepreneur-stage.jpg";
+import startup from "../assets/photos/startup-stage.png";
+import award100 from "../assets/photos/award-100-best.png";
+---
+<Base title="Speaking" description="Invite Coach Daru Dewayanto to keynote your conference or leadership summit: agile leadership, coaching culture, applied neuroscience and AI-powered learning.">
+  <PageHero eyebrow="Keynote speaker" title="Talks that move leaders from insight to action" lead="Award-winning master coach and founder, speaking to leadership summits, corporate gatherings and entrepreneur forums across Asia and the Middle East." image={speaking} alt="" position="50% 25%">
+    <div class="btn-row"><a class="btn btn-white" href={wa("speaking")} target="_blank" rel="noopener">Check Availability</a></div>
+  </PageHero>
+
+  <section class="topics section">
+    <div class="wrap">
+      <div class="center wrap-narrow" data-reveal>
+        <span class="eyebrow">Signature topics</span>
+        <h2 class="h2 caps">What I Speak About</h2>
+        <hr class="rule" />
+        <p class="lead">Every talk is tailored to your audience and the outcome you want them to walk away with.</p>
+      </div>
+      <ol class="t-grid" role="list">
+        {speakingTopics.map((t, i) => (
+          <li data-reveal style={`--d:${(i % 3) * 0.08}s`}>
+            <span class="n">0{i + 1}</span>
+            <h3 class="h3">{t.title}</h3>
+            <p class="muted">{t.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="photos">
+    <div class="p-grid">
+      <div class="media"><Image src={entStage} alt="Coach Daru speaking at an entrepreneur summit" widths={[500, 900, 1333]} sizes="(min-width: 900px) 33vw, 100vw" /></div>
+      <div class="media"><Image src={startup} alt="Coach Daru on stage at the Startup World Cup" widths={[512, 1024]} sizes="(min-width: 900px) 33vw, 100vw" /></div>
+      <div class="media"><Image src={award100} alt="Receiving the 100 Best Global Coaching Leader award" widths={[333, 666]} sizes="(min-width: 900px) 33vw, 100vw" /></div>
+    </div>
+  </section>
+
+  <section class="formats dark grain section">
+    <div class="wrap f-grid">
+      <div data-reveal>
+        <span class="eyebrow">Formats</span>
+        <h2 class="h2">Keynotes, workshops and conversations</h2>
+        <hr class="rule" />
+        <p class="lead">Delivered in English or Bahasa Indonesia, in person or online.</p>
+      </div>
+      <ul class="f-list" role="list">
+        {speakingFormats.map((f) => (
+          <li data-reveal><h3 class="h3">{f.title}</h3><p>{f.text}</p></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="cred section-tight">
+    <div class="wrap c-row" data-reveal>
+      {awards.slice(0, 2).map((a) => (
+        <div><span class="eyebrow">{a.year}</span><p class="h3">{a.title}</p><p class="small muted">{a.by}</p></div>
+      ))}
+      <a class="btn btn-solid" href={wa("speaking")} target="_blank" rel="noopener"><Icon name="whatsapp" /> Invite Coach Daru</a>
+    </div>
+  </section>
+
+  <CtaBand title="Bring Coach Daru to your stage" text="Share your event, date and audience and we'll come back with availability and a tailored talk outline." topic="speaking" button="Invite to Speak" />
+</Base>
+
+<style>
+  .topics .lead { margin-top: 0.4rem; }
+  .t-grid { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 3.5rem; }
+  .t-grid li { background: #fff; padding: 2.4rem 2rem; display: grid; gap: 0.9rem; align-content: start; }
+  .n { font-family: var(--serif); color: var(--greige-deep); font-size: 1.1rem; }
+  @media (min-width: 700px) { .t-grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1000px) { .t-grid { grid-template-columns: repeat(3, 1fr); } }
+
+  .p-grid { display: grid; gap: 2px; }
+  .p-grid .media { aspect-ratio: 4 / 3; }
+  @media (min-width: 900px) { .p-grid { grid-template-columns: repeat(3, 1fr); } .p-grid .media { aspect-ratio: 4 / 5; } }
+
+  .f-grid { display: grid; gap: 3rem 5rem; align-items: start; }
+  .f-list li { padding: 1.6rem 0; border-top: 1px solid var(--line-dark); }
+  .f-list p { margin-top: 0.4rem; color: #b0aaa3; }
+  @media (min-width: 900px) { .f-grid { grid-template-columns: 1fr 1fr; } }
+
+  .c-row { display: grid; gap: 2rem; align-items: center; }
+  .c-row .h3 { margin: 0.5rem 0 0.2rem; }
+  @media (min-width: 900px) { .c-row { grid-template-columns: 1fr 1fr auto; } }
+</style>

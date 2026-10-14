@@ -1,0 +1,143 @@
+---
+import { u } from "../lib/url";
+import Icon from "./Icon.astro";
+import { nav, wa } from "../data/site";
+
+interface Props { overlay?: boolean }
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const path = Astro.url.pathname.slice(base.length).replace(/\/$/, "") || "/";
+const isActive = (href: string) => path.startsWith(href);
+---
+<header class="site-header" data-header>
+  <div class="bar wrap">
+    <a href={u("/")} class="brand" aria-label="Coach Daru Dewayanto, home">
+      <span class="name">Daru Dewayanto</span>
+      <span class="sub">Master Coach</span>
+    </a>
+
+    <nav class="links" aria-label="Main">
+      {nav.map((n) => (
+        <a href={u(n.href)} class:list={[{ active: isActive(n.href) }]} aria-current={isActive(n.href) ? "page" : undefined}>
+          {n.label}
+        </a>
+      ))}
+    </nav>
+
+    <a href={wa("general")} target="_blank" rel="noopener" class="btn btn-ghost-light cta">Book a Conversation</a>
+
+    <button class="toggle" aria-expanded="false" aria-controls="mobile-nav" data-toggle>
+      <span class="sr-only">Open menu</span>
+      <Icon name="menu" size={24} class="i-open" />
+      <Icon name="close" size={24} class="i-close" />
+    </button>
+  </div>
+
+  <div class="mobile" id="mobile-nav" data-mobile hidden>
+    <nav aria-label="Mobile" class="wrap">
+      <a href={u("/")}>Home</a>
+      {nav.map((n) => <a href={u(n.href)} class:list={[{ active: isActive(n.href) }]}>{n.label}</a>)}
+      <a class="btn btn-white" href={wa("general")} target="_blank" rel="noopener">
+        <Icon name="whatsapp" /> Book a Conversation
+      </a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 50;
+    color: #fff;
+    transition: background 0.35s var(--ease), box-shadow 0.35s var(--ease);
+  }
+  .scrolled, .open { background: rgba(18, 18, 18, 0.96); box-shadow: 0 1px 0 var(--line-dark); }
+  .bar {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    height: var(--header-h);
+    transition: height 0.35s var(--ease);
+  }
+  .scrolled .bar { height: 68px; }
+
+  .brand { display: grid; line-height: 1; margin-right: auto; }
+  .name {
+    font-family: var(--serif);
+    font-size: clamp(1.05rem, 0.95rem + 0.4vw, 1.3rem);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .sub {
+    margin-top: 0.4rem;
+    font-size: 0.56rem;
+    font-weight: 600;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--greige);
+  }
+
+  .links { display: none; gap: 2.2rem; }
+  .links a {
+    position: relative;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding-block: 0.4rem;
+  }
+  .links a::after {
+    content: "";
+    position: absolute; left: 0; right: 0; bottom: 0;
+    height: 1px; background: currentColor;
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s var(--ease);
+  }
+  .links a:hover::after, .links a.active::after { transform: scaleX(1); }
+
+  .cta { display: none; min-height: 42px; padding-inline: 1.3em; }
+
+  .toggle {
+    display: grid; place-items: center;
+    width: 44px; height: 44px;
+    border: 1px solid var(--line-dark);
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+  }
+  .toggle :global(.i-close) { display: none; }
+  .toggle[aria-expanded="true"] :global(.i-close) { display: block; }
+  .toggle[aria-expanded="true"] :global(.i-open) { display: none; }
+
+  .mobile { border-top: 1px solid var(--line-dark); padding-block: 1rem 2rem; }
+  .mobile[hidden] { display: none; }
+  .mobile nav { display: grid; }
+  .mobile nav a:not(.btn) {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--line-dark);
+  }
+  .mobile nav a.active { color: var(--greige); }
+  .mobile .btn { margin-top: 1.5rem; }
+
+  @media (min-width: 1000px) {
+    .links, .cta { display: flex; }
+    .toggle, .mobile { display: none !important; }
+  }
+</style>
+
+<script>
+  const header = document.querySelector<HTMLElement>("[data-header]")!;
+  const toggle = header.querySelector<HTMLButtonElement>("[data-toggle]")!;
+  const panel = header.querySelector<HTMLElement>("[data-mobile]")!;
+  toggle.addEventListener("click", () => {
+    const open = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!open));
+    panel.hidden = open;
+    header.classList.toggle("open", !open);
+  });
+  const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 24);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+</script>

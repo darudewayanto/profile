@@ -1,0 +1,66 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import Image from "../components/Img.astro";
+import Icon from "../components/Icon.astro";
+import CtaBand from "../components/CtaBand.astro";
+import { badgeImg } from "../lib/assets";
+import { programs, wa } from "../data/site";
+import entStage from "../assets/photos/daru-entrepreneur-stage.jpg";
+---
+<Base title="Certification Programs" description="Internationally accredited coaching certifications designed and led by Daru Dewayanto: ACHC (ICAgile ICP-ACC), CBHC (ICF Level 1) and CHMP (MyBrain & ICF CCE).">
+  <PageHero eyebrow="Chief instructor & program designer" title="Become a coach, to an international standard" lead="Three internationally accredited certification programs, designed and led by Coach Daru. More than 1,800 coaches and practitioners certified in Indonesia, Hong Kong, Australia and Qatar." image={entStage} alt="" position="50% 20%">
+    <div class="btn-row"><a class="btn btn-white" href={wa("programs")} target="_blank" rel="noopener">Ask About the Next Batch</a></div>
+  </PageHero>
+
+  <section class="section">
+    <div class="wrap list">
+      {programs.map((p, i) => (
+        <article class="prog" data-reveal>
+          <div class="code">
+            <span class="eyebrow">Program 0{i + 1}</span>
+            <p class="big">{p.code}</p>
+            <div class="logos">
+              {p.logos.map((l) => <Image src={badgeImg[l]} alt="" height={64} class="badge-img" />)}
+            </div>
+          </div>
+          <div class="info">
+            <h2 class="h2">{p.name}</h2>
+            <p class="acc"><Icon name="award" size={18} /> {p.accreditation}</p>
+            <p class="lead">{p.text}</p>
+            <p class="small muted">Coach Daru's role: {p.role}</p>
+            <div class="btn-row">
+              <a class="btn btn-solid" href={wa("programs", ` (${p.code})`)} target="_blank" rel="noopener">Register Interest</a>
+              {p.href && <a class="btn" href={p.href} target="_blank" rel="noopener">Program Details <Icon name="arrow-up-right" /></a>}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="inhouse dark grain section">
+    <div class="wrap-narrow center" data-reveal>
+      <span class="eyebrow">For organizations</span>
+      <h2 class="h2">In-house certification for your leaders</h2>
+      <hr class="rule" />
+      <p class="lead">Each program can be delivered privately for your executives, corporate-university faculty or internal coaches, as Telkom Group and Pertamina have done across dozens of batches.</p>
+      <div class="btn-row" style="margin-top:2rem"><a class="btn btn-white" href={wa("transformation")} target="_blank" rel="noopener">Discuss an In-house Batch</a></div>
+    </div>
+  </section>
+
+  <CtaBand topic="programs" />
+</Base>
+
+<style>
+  .list { display: grid; gap: 0; }
+  .prog { display: grid; gap: 2rem 5rem; padding-block: clamp(3rem, 2rem + 3vw, 5rem); border-top: 1px solid var(--line-strong); }
+  .prog:first-child { border-top: 0; padding-top: 0; }
+  .big { font-family: var(--serif); font-size: clamp(3.5rem, 2.5rem + 4vw, 6rem); line-height: 1; margin-top: 0.8rem; }
+  .logos { display: flex; gap: 1.2rem; align-items: center; margin-top: 1.6rem; }
+  .info > * + * { margin-top: 1.1rem; }
+  .acc { display: inline-flex; gap: 0.6rem; align-items: center; font-size: var(--fs-small); font-weight: 600; padding: 0.5rem 0.9rem; background: var(--off); }
+  .acc :global(svg) { color: var(--greige-deep); }
+  .info .btn-row { margin-top: 1.8rem; }
+  @media (min-width: 900px) { .prog { grid-template-columns: 320px 1fr; } }
+</style>

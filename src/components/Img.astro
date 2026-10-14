@@ -1,0 +1,8 @@
+---
+// Wraps astro:assets <Image> so fixed-size images (logos, badges) also ship a 2x
+// variant for retina screens, and photos keep a high quality setting (no soft/blurry output).
+import { Image } from "astro:assets";
+const props = Astro.props as any;
+const extra = props.widths || props.densities ? {} : { densities: [1, 2] };
+---
+<Image quality={90} {...props} {...extra} />

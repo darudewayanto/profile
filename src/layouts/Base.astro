@@ -1,0 +1,86 @@
+---
+import { u } from "../lib/url";
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import WhatsAppFab from "../components/WhatsAppFab.astro";
+import { site } from "../data/site";
+
+interface Props { title?: string; description?: string; overlay?: boolean }
+const { title, description = site.description, overlay = false } = Astro.props;
+const fullTitle = title ? `${title} · Coach Daru Dewayanto` : `Coach Daru Dewayanto · ${site.tagline}`;
+const siteUrl = Astro.site ?? new URL(site.url);
+const canonical = new URL(Astro.url.pathname, siteUrl).href;
+const ogImage = new URL(u("/og.jpg"), siteUrl).href;
+// Temporary hosts (GitHub Pages) build with PUBLIC_NOINDEX=true so search engines skip them.
+const noindex = import.meta.env.PUBLIC_NOINDEX === "true";
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="theme-color" content="#1a1a1a" />
+    <link rel="icon" type="image/png" href={u("/favicon.png")} />
+    <link rel="apple-touch-icon" href={u("/apple-touch-icon.png")} />
+
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content="Coach Daru Dewayanto" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Pinyon+Script&family=Prata&display=swap"
+      rel="stylesheet"
+    />
+    <script is:inline>document.documentElement.classList.add("js");</script>
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: "Daru Dewayanto",
+      alternateName: "Coach Daru",
+      honorificSuffix: "MCM, MCC, ICE-AC",
+      jobTitle: "Founder, CEO & Master Coach",
+      worksFor: [{ "@type": "Organization", name: "HADE" }, { "@type": "Organization", name: "Center of Agility" }],
+      description: site.description,
+      url: new URL(u("/"), siteUrl).href,
+      email: site.email,
+      telephone: site.phoneDisplay,
+      award: [
+        "100 Best Global Coaching Leader 2017, 2018 & 2019 (World Coaching Congress)",
+        "Top Business Award 2016 & 2017 (International Business Federation)",
+      ],
+      hasCredential: ["ICF Master Certified Coach (MCC)", "ICAgile Certified Expert in Agile Coaching (ICE-AC)", "MIND Master Practitioner"],
+    })} />
+  </head>
+  <body class:list={[{ "has-overlay": overlay }]}>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header overlay={overlay} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <WhatsAppFab />
+
+    <script>
+      // Fade sections in as they enter the viewport.
+      const io = new IntersectionObserver(
+        (entries) => entries.forEach((e) => {
+          if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+        }),
+        { rootMargin: "0px 0px -40px 0px", threshold: 0.01 },
+      );
+      document.querySelectorAll("[data-reveal]").forEach((el) => io.observe(el));
+    </script>
+  </body>
+</html>

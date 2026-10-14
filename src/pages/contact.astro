@@ -1,0 +1,85 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import Icon from "../components/Icon.astro";
+import { site, wa } from "../data/site";
+import brick from "../assets/photos/daru-brick.jpg";
+
+const reasons = [
+  { value: "general", label: "A personal conversation" },
+  { value: "coaching", label: "Executive / leadership coaching" },
+  { value: "transformation", label: "Agile transformation for my organization" },
+  { value: "speaking", label: "Keynote or speaking invitation" },
+  { value: "programs", label: "Coaching certification programs" },
+];
+---
+<Base title="Contact" description="Schedule a conversation with Coach Daru Dewayanto via WhatsApp or email.">
+  <PageHero eyebrow="Contact" title="Let's Have a Conversation" lead="Tell me a little about you and what you're working on. Messages go straight to WhatsApp, and you'll hear back within one business day." image={brick} alt="" position="40% 30%" />
+
+  <section class="section">
+    <div class="wrap grid">
+      <form class="form" data-contact data-number={site.whatsapp}>
+        <span class="eyebrow">Send a message</span>
+        <label>Name<input name="name" required autocomplete="name" /></label>
+        <label>Organization & role<input name="org" autocomplete="organization" /></label>
+        <label>I'd like to talk about
+          <select name="reason">
+            {reasons.map((r) => <option value={r.value}>{r.label}</option>)}
+          </select>
+        </label>
+        <label>Message<textarea name="msg" rows="5" placeholder="What's on your mind?"></textarea></label>
+        <button class="btn btn-solid" type="submit"><Icon name="whatsapp" /> Send via WhatsApp</button>
+        <p class="small muted">Opens WhatsApp with your message ready to send. Nothing is stored on this website.</p>
+      </form>
+
+      <aside class="side">
+        <div>
+          <span class="eyebrow">WhatsApp</span>
+          <a class="h3" href={wa("general")} target="_blank" rel="noopener">{site.phoneDisplay}</a>
+        </div>
+        <div>
+          <span class="eyebrow">Email</span>
+          <a class="h3" href={`mailto:${site.email}`}>{site.email}</a>
+        </div>
+        <div>
+          <span class="eyebrow">Where I work</span>
+          <p class="h3">{site.countries.join(" · ")}</p>
+          <p class="small muted">In person or online, in English or Bahasa Indonesia.</p>
+        </div>
+        <p class="signature">Daru Dewayanto</p>
+      </aside>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .grid { display: grid; gap: 4rem 6rem; align-items: start; }
+  .form { display: grid; gap: 1.4rem; }
+  label { display: grid; gap: 0.5rem; font-size: var(--fs-micro); font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+  input, select, textarea {
+    font-size: 1rem; letter-spacing: 0; text-transform: none; color: var(--ink); font-weight: 400;
+    border: 0; border-bottom: 1px solid var(--line-strong); padding: 0.7rem 0; background: transparent; border-radius: 0;
+  }
+  textarea { resize: vertical; }
+  input:focus, select:focus, textarea:focus { outline: none; border-bottom-color: var(--ink); }
+  .form .btn { justify-self: start; margin-top: 0.8rem; }
+  .side { display: grid; gap: 2.2rem; padding: clamp(2rem, 4vw, 3rem); background: var(--off); }
+  .side .h3 { display: block; margin-top: 0.5rem; word-break: break-word; }
+  @media (min-width: 900px) { .grid { grid-template-columns: 1.3fr 1fr; } }
+</style>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>("[data-contact]")!;
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const d = new FormData(form);
+    const sel = form.querySelector("select")!;
+    const lines = [
+      "Hello Coach Daru,",
+      `My name is ${d.get("name")}${d.get("org") ? ` (${d.get("org")})` : ""}.`,
+      `I'd like to talk about: ${sel.options[sel.selectedIndex].text}.`,
+      (d.get("msg") as string)?.trim(),
+    ].filter(Boolean);
+    window.open(`https://wa.me/${form.dataset.number}?text=${encodeURIComponent(lines.join("\n"))}`, "_blank", "noopener");
+  });
+</script>

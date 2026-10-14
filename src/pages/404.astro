@@ -1,0 +1,10 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import { u } from "../lib/url";
+---
+<Base title="Page not found">
+  <PageHero eyebrow="404" title="This page took a different path" lead="The page you're looking for doesn't exist or has moved.">
+    <div class="btn-row"><a class="btn btn-white" href={u("/")}>Back to Home</a></div>
+  </PageHero>
+</Base>

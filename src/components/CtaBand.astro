@@ -1,0 +1,39 @@
+---
+import Image from "./Img.astro";
+import Icon from "./Icon.astro";
+import { wa, type WaTopic } from "../data/site";
+import window_ from "../assets/photos/daru-window.jpg";
+
+interface Props { title?: string; text?: string; topic?: WaTopic; button?: string }
+const {
+  title = "Let's Have a Conversation",
+  text = "Every engagement starts with an honest conversation about where you are and where you want to lead. No pitch, no obligation.",
+  topic = "general",
+  button = "Schedule a Consultation",
+} = Astro.props;
+---
+<section class="cta dark grain">
+  <div class="wrap grid">
+    <div class="photo media" data-reveal>
+      <Image src={window_} alt="Coach Daru Dewayanto standing by a window" widths={[420, 840]} sizes="(min-width: 900px) 420px, 80vw" />
+    </div>
+    <div class="copy" data-reveal style="--d:.1s">
+      <span class="eyebrow">Start here</span>
+      <h2 class="h2">{title}</h2>
+      <hr class="rule" />
+      <p class="lead">{text}</p>
+      <div class="btn-row">
+        <a class="btn btn-white" href={wa(topic)} target="_blank" rel="noopener"><Icon name="whatsapp" /> {button}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta { padding-block: var(--section); }
+  .grid { display: grid; gap: clamp(2.5rem, 2rem + 4vw, 6rem); align-items: center; }
+  .photo { aspect-ratio: 4 / 5; max-width: 420px; }
+  .copy > * + * { margin-top: 1.2rem; }
+  .copy .btn-row { margin-top: 2rem; }
+  @media (min-width: 900px) { .grid { grid-template-columns: 420px 1fr; } }
+</style>

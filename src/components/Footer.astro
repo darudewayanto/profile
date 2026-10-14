@@ -1,0 +1,57 @@
+---
+import { u } from "../lib/url";
+import Image from "./Img.astro";
+import Icon from "./Icon.astro";
+import { nav, site, wa } from "../data/site";
+import { brandImg } from "../lib/assets";
+const year = new Date().getFullYear();
+---
+<footer class="footer darker grain">
+  <div class="wrap top">
+    <div class="id">
+      <a href={u("/")} class="name">Daru Dewayanto</a>
+      <p class="muted small">{site.postnominals}<br />{site.role}</p>
+      <div class="logos">
+        <Image src={brandImg["hade-white"]} alt="HADE" width={84} />
+        <Image src={brandImg["emblem-white"]} alt="HADE AI" width={66} />
+      </div>
+    </div>
+
+    <nav aria-label="Footer">
+      <span class="eyebrow">Explore</span>
+      <a href={u("/")}>Home</a>
+      {nav.map((n) => <a href={u(n.href)}>{n.label}</a>)}
+    </nav>
+
+    <div class="contact">
+      <span class="eyebrow">Get in touch</span>
+      <a href={wa("general")} target="_blank" rel="noopener"><Icon name="whatsapp" size={18} /> {site.phoneDisplay}</a>
+      <a href={`mailto:${site.email}`}><Icon name="mail" size={18} /> {site.email}</a>
+      <p class="small muted"><Icon name="globe" size={18} /> {site.countries.join(" · ")}</p>
+    </div>
+  </div>
+
+  <div class="wrap bottom small muted">
+    <span>© {year} Daru Dewayanto. All rights reserved.</span>
+    <span class="signature">Daru Dewayanto</span>
+  </div>
+</footer>
+
+<style>
+  .footer { padding-block: clamp(4rem, 3rem + 4vw, 6rem) 2rem; }
+  .top { display: grid; gap: 3rem; }
+  .name { font-family: var(--serif); font-size: 1.6rem; text-transform: uppercase; letter-spacing: 0.05em; color: #fff; }
+  .id p { margin-top: 1rem; max-width: 34ch; line-height: 1.7; }
+  .logos { display: flex; align-items: center; gap: 1.4rem; margin-top: 1.8rem; opacity: 0.85; }
+  nav, .contact { display: grid; align-content: start; gap: 0.55rem; }
+  nav a, .contact a { font-size: var(--fs-small); width: fit-content; transition: color 0.2s; }
+  nav a:hover, .contact a:hover { color: #fff; }
+  .contact a, .contact p { display: inline-flex; align-items: center; gap: 0.6rem; }
+  .eyebrow { margin-bottom: 0.6rem; }
+  .bottom {
+    display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;
+    margin-top: 4rem; padding-top: 1.8rem; border-top: 1px solid var(--line-dark);
+  }
+  .bottom .signature { font-size: 1.9rem; color: var(--greige); }
+  @media (min-width: 820px) { .top { grid-template-columns: 1.6fr 1fr 1.3fr; } }
+</style>

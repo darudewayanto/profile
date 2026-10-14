@@ -1,0 +1,27 @@
+---
+import Icon from "./Icon.astro";
+import { wa } from "../data/site";
+---
+<a class="fab" href={wa("general")} target="_blank" rel="noopener" aria-label="Chat with Coach Daru on WhatsApp">
+  <Icon name="whatsapp" size={22} />
+</a>
+
+<style>
+  .fab {
+    position: fixed;
+    right: clamp(0.9rem, 2vw, 1.5rem);
+    bottom: clamp(0.9rem, 2vw, 1.5rem);
+    z-index: 40;
+    display: grid;
+    place-items: center;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: var(--char-900);
+    color: #fff;
+    border: 1px solid rgba(205, 196, 186, 0.5);
+    box-shadow: 0 14px 30px -10px rgba(0, 0, 0, 0.55);
+    transition: transform 0.25s var(--ease), background 0.25s;
+  }
+  .fab:hover { transform: translateY(-2px); background: var(--char-700); }
+</style>
