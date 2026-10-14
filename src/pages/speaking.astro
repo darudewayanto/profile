@@ -4,6 +4,7 @@ import PageHero from "../components/PageHero.astro";
 import Image from "../components/Img.astro";
 import Icon from "../components/Icon.astro";
 import CtaBand from "../components/CtaBand.astro";
+import Gallery from "../components/Gallery.astro";
 import { speakingTopics, speakingFormats, wa, awards } from "../data/site";
 import speaking from "../assets/photos/daru-speaking.jpg";
 import entStage from "../assets/photos/daru-entrepreneur-stage.jpg";
@@ -35,12 +36,12 @@ import award100 from "../assets/photos/award-100-best.png";
     </div>
   </section>
 
-  <section class="photos">
-    <div class="p-grid">
-      <div class="media"><Image src={entStage} alt="Coach Daru speaking at an entrepreneur summit" widths={[500, 900, 1333]} sizes="(min-width: 900px) 33vw, 100vw" /></div>
-      <div class="media"><Image src={startup} alt="Coach Daru on stage at the Startup World Cup" widths={[512, 1024]} sizes="(min-width: 900px) 33vw, 100vw" /></div>
-      <div class="media"><Image src={award100} alt="Receiving the 100 Best Global Coaching Leader award" widths={[333, 666]} sizes="(min-width: 900px) 33vw, 100vw" /></div>
-    </div>
+  <section class="photos section-tight">
+    <Gallery items={[
+      { src: entStage, alt: "Coach Daru speaking at an entrepreneur summit", caption: "Entrepreneur summit" },
+      { src: startup, alt: "Coach Daru on stage at the Startup World Cup", caption: "Startup World Cup · HADE AI" },
+      { src: award100, alt: "Receiving the 100 Best Global Coaching Leader award", caption: "World Coaching Congress" },
+    ]} />
   </section>
 
   <section class="formats dark grain section">
@@ -78,10 +79,6 @@ import award100 from "../assets/photos/award-100-best.png";
   .n { font-family: var(--serif); color: var(--greige-deep); font-size: 1.1rem; }
   @media (min-width: 700px) { .t-grid { grid-template-columns: 1fr 1fr; } }
   @media (min-width: 1000px) { .t-grid { grid-template-columns: repeat(3, 1fr); } }
-
-  .p-grid { display: grid; gap: 2px; }
-  .p-grid .media { aspect-ratio: 4 / 3; }
-  @media (min-width: 900px) { .p-grid { grid-template-columns: repeat(3, 1fr); } .p-grid .media { aspect-ratio: 4 / 5; } }
 
   .f-grid { display: grid; gap: 3rem 5rem; align-items: start; }
   .f-list li { padding: 1.6rem 0; border-top: 1px solid var(--line-dark); }

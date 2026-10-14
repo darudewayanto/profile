@@ -204,7 +204,7 @@ export const ventures = [
     href: "https://hade.belajaragile.com",
   },
   {
-    logo: "hade-ai-emblem",
+    logo: "hade-ai",
     name: "HADE AI",
     text: "A large-language-model platform for digital learning. Top 10 finalist at the Startup World Cup.",
     href: "https://hade.belajaragile.com/hade-ai",

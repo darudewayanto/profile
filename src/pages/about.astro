@@ -3,12 +3,12 @@ import Base from "../layouts/Base.astro";
 import PageHero from "../components/PageHero.astro";
 import Image from "../components/Img.astro";
 import CtaBand from "../components/CtaBand.astro";
+import Gallery from "../components/Gallery.astro";
 import { badgeImg, brandImg, crispWidth } from "../lib/assets";
 import { site, journey, stats, masterCredentials, accreditedMembers, awards } from "../data/site";
 import portrait from "../assets/photos/daru-portrait.png";
 import lounge from "../assets/photos/daru-lounge.jpg";
 import entStage from "../assets/photos/daru-entrepreneur-stage.jpg";
-import startup from "../assets/photos/startup-stage.png";
 import city from "../assets/photos/city.png";
 ---
 <Base title="About" description="The story of Daru Dewayanto: corporate leader, entrepreneur and the first holder of three master agile coach credentials in Asia & Australia.">
@@ -59,12 +59,11 @@ import city from "../assets/photos/city.png";
     </div>
   </section>
 
-  <section class="gallery">
-    <div class="g-grid">
-      <div class="media g1"><Image src={lounge} alt="Coach Daru in a lounge, reviewing notes" widths={[700, 1200, 2000]} sizes="(min-width: 900px) 50vw, 100vw" /></div>
-      <div class="media g2"><Image src={entStage} alt="Coach Daru presenting HADE's credentials at an entrepreneur summit" widths={[500, 900, 1333]} sizes="(min-width: 900px) 25vw, 50vw" /></div>
-      <div class="media g3"><Image src={startup} alt="Coach Daru on stage at the Startup World Cup" width={1024} sizes="(min-width: 900px) 25vw, 50vw" densities={undefined} widths={[512, 1024]} /></div>
-    </div>
+  <section class="section-tight off">
+    <Gallery items={[
+      { src: lounge, alt: "Coach Daru in a lounge, reviewing notes" },
+      { src: entStage, alt: "Coach Daru presenting at an entrepreneur summit" },
+    ]} />
   </section>
 
   <section class="creds section">
@@ -125,12 +124,6 @@ import city from "../assets/photos/city.png";
   @media (min-width: 900px) {
     .timeline { grid-template-columns: repeat(4, 1fr); gap: 2rem; }
   }
-
-  .g-grid { display: grid; gap: 2px; grid-template-columns: 1fr 1fr; }
-  .g-grid .media { aspect-ratio: 4 / 5; }
-  .g1 { grid-column: 1 / -1; aspect-ratio: 16 / 9 !important; }
-  .g1 :global(img) { object-position: 50% 40%; }
-  @media (min-width: 900px) { .g-grid { grid-template-columns: 2fr 1fr 1fr; } .g1 { grid-column: auto; aspect-ratio: auto !important; } .g-grid .media { height: 560px; } }
 
   .two { display: grid; gap: 3rem 5rem; }
   .list { margin-top: 1.2rem; }
