@@ -27,7 +27,7 @@ jobs:
       - run: npm run build
         env:
           SITE_URL: https://darudewayanto.github.io
-          BASE_PATH: /coach-daru
+          BASE_PATH: /profile
           PUBLIC_NOINDEX: "true"
       - uses: actions/upload-pages-artifact@v3
         with:
