@@ -4,14 +4,14 @@ import Image from "./Img.astro";
 import Icon from "./Icon.astro";
 import { brandImg } from "../lib/assets";
 import { ventures, clients } from "../data/site";
-interface Props { showClients?: boolean; tone?: string }
-const { showClients = false, tone = "" } = Astro.props;
+interface Props { showClients?: boolean; tone?: string; eyebrow?: string; title?: string }
+const { showClients = false, tone = "", eyebrow = "Founder & CEO", title = "The Ventures I Lead" } = Astro.props;
 ---
   <section class:list={["ventures section", tone]}>
     <div class="wrap">
       <div class="center wrap-narrow" data-reveal>
-        <span class="eyebrow">Founder & Program Designer</span>
-        <h2 class="h2 caps">The Ventures I Lead</h2>
+        {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+        <h2 class="h2 caps">{title}</h2>
         <hr class="rule" />
       </div>
       <div class="v-grid">
