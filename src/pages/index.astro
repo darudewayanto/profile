@@ -115,7 +115,7 @@ const isWide = (key: string) => badgeImg[key].width / badgeImg[key].height > 1.5
     </div>
     <div class="wrap svc-grid">
       {services.map((s, i) => (
-        <a class="svc dark grain" href={u(`/coaching#${s.id}`)} data-reveal style={`--d:${i * 0.1}s`}>
+        <a class="svc dark grain" href={u(`/programs#${s.id}`)} data-reveal style={`--d:${i * 0.1}s`}>
           <Icon name={s.icon} size={34} />
           <h3 class="h3 caps">{s.title}</h3>
           <hr class="rule center" />
@@ -142,7 +142,7 @@ const isWide = (key: string) => badgeImg[key].width / badgeImg[key].height > 1.5
           ))}
         </ol>
         <div class="btn-row">
-          <a class="btn btn-solid" href={u("/speaking")}>Speaking Topics</a>
+          <a class="btn btn-solid" href={u("/programs#speaking")}>Speaking Topics</a>
           <a class="btn" href={wa("speaking")} target="_blank" rel="noopener">Invite Coach Daru</a>
         </div>
       </div>
@@ -193,7 +193,7 @@ const isWide = (key: string) => badgeImg[key].width / badgeImg[key].height > 1.5
           </ul>
         </div>
       </div>
-      <p class="center cred-more"><a class="link-line" href={u("/programs")}>See the certification programs <Icon name="arrow-right" /></a></p>
+      <p class="center cred-more"><a class="link-line" href={u("/programs#certification")}>See the certification programs <Icon name="arrow-right" /></a></p>
     </div>
   </section>
 

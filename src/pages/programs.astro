@@ -1,75 +1,238 @@
 ---
+// One page for every way to work with Coach Daru: coaching & advisory, keynote speaking
+// and certification. Full program details live on the HADE and MyBrain websites.
 import Base from "../layouts/Base.astro";
 import PageHero from "../components/PageHero.astro";
 import Image from "../components/Img.astro";
 import Icon from "../components/Icon.astro";
-import CtaBand from "../components/CtaBand.astro";
+import Gallery from "../components/Gallery.astro";
 import Ventures from "../components/Ventures.astro";
+import CtaBand from "../components/CtaBand.astro";
 import { badgeImg } from "../lib/assets";
-import { programs, wa } from "../data/site";
+import { services, speakingTopics, speakingFormats, programs, wa, links } from "../data/site";
+import speaking from "../assets/photos/daru-speaking.jpg";
 import entStage from "../assets/photos/daru-entrepreneur-stage.jpg";
+import startup from "../assets/photos/startup-stage.png";
+import award100 from "../assets/photos/award-100-best.png";
+
+const jump = [
+  { href: "#coaching", n: "01", label: "Coaching & Advisory" },
+  { href: "#speaking", n: "02", label: "Keynote Speaking" },
+  { href: "#certification", n: "03", label: "Certification" },
+];
+const steps = [
+  { title: "Conversation", text: "A free, confidential conversation about where you are and what's at stake." },
+  { title: "Discovery", text: "Stakeholder input and, where useful, MIND neuro-dominance profiling." },
+  { title: "Coaching", text: "Regular sessions with clear goals agreed with you and your organization." },
+  { title: "Review", text: "Progress measured against your goals and the feedback of the people you lead." },
+];
+const faqs = [
+  { q: "Who do you work with?", a: "CEOs, directors, founders and senior leaders, plus leadership teams going through agile transformation, from state-owned enterprises and multinationals to government institutions and family businesses." },
+  { q: "English or Bahasa Indonesia?", a: "Both. Coaching, keynotes and certification run in English or Bahasa Indonesia, in person or online." },
+  { q: "Where do I find full program details?", a: "Corporate programs and the ACHC & CBHC certifications are detailed on the HADE website; profiling and the CHMP certification on the MyBrain Indonesia website. Every card on this page links straight to them." },
+  { q: "What does it cost?", a: "Every engagement is scoped to your goals and the number of people involved. Start with a conversation and you'll receive a clear proposal." },
+];
 ---
-<Base title="Certification Programs" description="Internationally accredited coaching certifications designed and led by Daru Dewayanto: ACHC (ICAgile ICP-ACC), CBHC (ICF Level 1) and CHMP (MyBrain & ICF CCE).">
-  <PageHero eyebrow="Chief instructor & program designer" title="Become a coach, to an international standard" lead="Three internationally accredited certification programs, designed and led by Coach Daru. More than 1,800 coaches and practitioners certified in Indonesia, Hong Kong, Australia and Qatar." image={entStage} alt="" position="50% 20%">
-    <div class="btn-row"><a class="btn btn-white" href={wa("programs")} target="_blank" rel="noopener">Ask About the Next Batch</a></div>
+<Base title="Programs" description="Coaching & advisory, keynote speaking and internationally accredited coaching certification with Coach Daru Dewayanto, MCC, ICE-AC.">
+  <PageHero eyebrow="Programs" title="Three ways to work with Coach Daru" lead="Coach your leaders, inspire your stage, or certify your people as coaches. Every program is backed by HADE and MyBrain, where you'll find the full details." image={speaking} alt="" position="50% 25%">
+    <nav class="jump" aria-label="Program sections">
+      {jump.map((j) => <a href={j.href}><span>{j.n}</span>{j.label}</a>)}
+    </nav>
   </PageHero>
 
   <Ventures tone="off" eyebrow="" title="Founder & Program Designer" />
 
-  <section class="section">
-    <div class="wrap center prog-head" data-reveal>
-      <h2 class="h2 caps">International Certified & Accredited<br /> Agile Coaching Certification</h2>
-      <hr class="rule" />
+  <!-- 01 COACHING & ADVISORY -->
+  <section id="coaching" class="section">
+    <div class="wrap">
+      <header class="sec-head" data-reveal>
+        <span class="eyebrow">01 · For leaders & organizations</span>
+        <h2 class="h2 caps">Coaching & Advisory</h2>
+        <hr class="rule" />
+        <p class="lead">With an ICF Master Certified Coach and ICAgile Certified Expert in Agile Coaching, for leaders and organizations ready to change how they work.</p>
+      </header>
+
+      <div class="svc-grid">
+        {services.map((s, i) => (
+          <article id={s.id} class="svc" data-reveal style={`--d:${i * 0.08}s`}>
+            <Icon name={s.icon} size={30} />
+            <h3 class="h3">{s.title}</h3>
+            <p class="muted">{s.short}</p>
+            <ul role="list">{s.items.map((it) => <li><Icon name="check" size={14} /> {it}</li>)}</ul>
+            <div class="svc-links">
+              <a class="link-line" href={wa(s.wa)} target="_blank" rel="noopener">Discuss</a>
+              <a class="link-line" href={s.details.href} target="_blank" rel="noopener">{s.details.label} <Icon name="arrow-up-right" /></a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <ol class="steps" role="list" data-reveal>
+        {steps.map((st, i) => (
+          <li><span class="n">Step 0{i + 1}</span><strong>{st.title}</strong><p class="small muted">{st.text}</p></li>
+        ))}
+      </ol>
     </div>
-    <div class="wrap list">
-      {programs.map((p, i) => (
-        <article class="prog" data-reveal>
-          <div class="code">
-            <span class="eyebrow">Program 0{i + 1}</span>
-            <p class="big">{p.code}</p>
-            <div class="logos">
-              {p.logos.map((l) => <Image src={badgeImg[l]} alt="" height={64} class="badge-img" />)}
+  </section>
+
+  <!-- 02 KEYNOTE SPEAKING -->
+  <section id="speaking" class="speak dark grain">
+    <div class="speak-grid">
+      <div class="speak-photo media">
+        <Image src={speaking} alt="Coach Daru delivering a keynote" widths={[700, 1000, 1333]} sizes="(min-width: 900px) 40vw, 100vw" style="object-position: 50% 30%" />
+      </div>
+      <div class="speak-copy section" data-reveal>
+        <span class="eyebrow">02 · Keynote speaker</span>
+        <h2 class="h2 caps">Keynote Speaking</h2>
+        <hr class="rule" />
+        <ol class="topics" role="list">
+          {speakingTopics.map((t, i) => (
+            <li><span class="n">0{i + 1}</span><span><strong>{t.title}</strong><br /><span class="small">{t.text}</span></span></li>
+          ))}
+        </ol>
+        <p class="formats small">{speakingFormats.map((f) => f.title).join(" · ")} · English or Bahasa Indonesia</p>
+        <div class="btn-row">
+          <a class="btn btn-white" href={wa("speaking")} target="_blank" rel="noopener"><Icon name="whatsapp" /> Invite Coach Daru</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section-tight">
+    <Gallery items={[
+      { src: entStage, alt: "Coach Daru speaking at an entrepreneur summit", caption: "Entrepreneur summit" },
+      { src: startup, alt: "Coach Daru on stage at the Startup World Cup", caption: "Startup World Cup · HADE AI" },
+      { src: award100, alt: "Receiving the 100 Best Global Coaching Leader award", caption: "World Coaching Congress" },
+    ]} />
+  </section>
+
+  <!-- 03 CERTIFICATION -->
+  <section id="certification" class="section">
+    <div class="wrap">
+      <header class="sec-head center prog-head" data-reveal>
+        <h2 class="h2 caps">International Certified & Accredited<br /> Agile Coaching Certification</h2>
+        <hr class="rule" />
+        <p class="lead">More than 1,800 coaches and practitioners certified in Indonesia, Hong Kong, Australia and Qatar.</p>
+      </header>
+      <div class="prog-grid">
+        {programs.map((p, i) => (
+          <article class="prog" data-reveal style={`--d:${i * 0.08}s`}>
+            <div class="logos">{p.logos.map((l) => <Image src={badgeImg[l]} alt="" widths={[Math.min(badgeImg[l].width, 300)]} sizes="120px" class="badge-img" />)}</div>
+            <p class="code">{p.code}</p>
+            <h3 class="h3">{p.name}</h3>
+            <p class="acc"><Icon name="award" size={16} /> {p.accreditation}</p>
+            <p class="small muted">{p.text}</p>
+            <p class="role small">Coach Daru: {p.role}</p>
+            <div class="prog-links">
+              <a class="btn btn-solid" href={p.href} target="_blank" rel="noopener">Details on {p.site} <Icon name="arrow-up-right" /></a>
+              <a class="link-line" href={wa("programs", ` (${p.code})`)} target="_blank" rel="noopener">Register interest</a>
             </div>
-          </div>
-          <div class="info">
-            <h2 class="h2">{p.name}</h2>
-            <p class="acc"><Icon name="award" size={18} /> {p.accreditation}</p>
-            <p class="lead">{p.text}</p>
-            <p class="small muted">Coach Daru's role: {p.role}</p>
-            <div class="btn-row">
-              <a class="btn btn-solid" href={wa("programs", ` (${p.code})`)} target="_blank" rel="noopener">Register Interest</a>
-              {p.href && <a class="btn" href={p.href} target="_blank" rel="noopener">Program Details <Icon name="arrow-up-right" /></a>}
-            </div>
-          </div>
-        </article>
-      ))}
+          </article>
+        ))}
+      </div>
     </div>
   </section>
 
   <section class="inhouse dark grain section">
     <div class="wrap-narrow center" data-reveal>
       <span class="eyebrow">For organizations</span>
-      <h2 class="h2">In-house certification for your leaders</h2>
+      <h2 class="h2">In-house programs for your leaders</h2>
       <hr class="rule" />
-      <p class="lead">Each program can be delivered privately for your executives, corporate-university faculty or internal coaches, as Telkom Group and Pertamina have done across dozens of batches.</p>
-      <div class="btn-row" style="margin-top:2rem"><a class="btn btn-white" href={wa("transformation")} target="_blank" rel="noopener">Discuss an In-house Batch</a></div>
+      <p class="lead">Coaching, transformation and certification delivered privately for your executives, corporate-university faculty or internal coaches, as Telkom Group and Pertamina have done across dozens of batches.</p>
+      <div class="btn-row">
+        <a class="btn btn-white" href={wa("transformation")} target="_blank" rel="noopener">Discuss an In-house Program</a>
+        <a class="btn btn-ghost-light" href={links.hadeCorporate} target="_blank" rel="noopener">HADE Corporate Solutions <Icon name="arrow-up-right" /></a>
+      </div>
     </div>
   </section>
 
-  <CtaBand topic="programs" />
+  <section class="faq section">
+    <div class="wrap-narrow">
+      <header class="sec-head center" data-reveal>
+        <span class="eyebrow">Questions</span>
+        <h2 class="h2">Frequently asked</h2>
+      </header>
+      <div class="qs">
+        {faqs.map((f) => (
+          <details>
+            <summary>{f.q}<Icon name="plus" size={18} /></summary>
+            <p class="muted">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
 </Base>
 
 <style>
-  .prog-head { margin-bottom: clamp(2.5rem, 2rem + 3vw, 4.5rem); }
+  /* Jump links in the hero */
+  .jump { display: grid; gap: 0; margin-top: 2.4rem; border-top: 1px solid var(--line-dark); }
+  .jump a {
+    display: flex; gap: 1rem; align-items: baseline; padding: 0.9rem 0; border-bottom: 1px solid var(--line-dark);
+    font-family: var(--serif); font-size: 1.15rem; color: #fff; transition: padding 0.3s var(--ease), color 0.3s;
+  }
+  .jump a:hover { padding-left: 0.6rem; color: var(--greige); }
+  .jump span { font-family: var(--sans); font-size: var(--fs-micro); font-weight: 600; letter-spacing: 0.16em; color: var(--greige); }
+
+  .sec-head { max-width: 760px; }
+  .sec-head > * + * { margin-top: 1rem; }
+  .sec-head.center { margin-inline: auto; text-align: center; }
+  .sec-head.center .rule { margin-inline: auto; }
+
+  /* 01 Coaching */
+  .svc-grid { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: clamp(2.5rem, 2rem + 3vw, 4rem); }
+  .svc { background: #fff; padding: 2.2rem 2rem; display: grid; grid-template-rows: auto auto auto 1fr auto; gap: 0.9rem; scroll-margin-top: 100px; }
+  .svc > :global(svg) { color: var(--greige-deep); }
+  .svc ul { display: grid; align-content: start; gap: 0.45rem; padding-top: 0.6rem; border-top: 1px solid var(--line); }
+  .svc li { display: flex; gap: 0.6rem; align-items: baseline; font-size: var(--fs-small); }
+  .svc li :global(svg) { flex: none; color: var(--greige-deep); transform: translateY(2px); }
+  .svc-links { display: flex; flex-wrap: wrap; gap: 1.4rem; margin-top: 0.8rem; }
+  .steps { display: grid; gap: 1.5rem; margin-top: 3rem; }
+  .steps li { display: grid; gap: 0.3rem; padding-top: 1rem; border-top: 1px solid var(--ink); }
+  .steps .n { font-size: var(--fs-micro); font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+  .steps strong { font-family: var(--serif); font-weight: 400; font-size: 1.2rem; }
+  @media (min-width: 900px) { .svc-grid { grid-template-columns: repeat(3, 1fr); } .steps { grid-template-columns: repeat(4, 1fr); } }
+
+  /* 02 Speaking */
+  #speaking, #certification { scroll-margin-top: 70px; }
+  .speak-grid { display: grid; }
+  .speak-photo { min-height: 460px; }
+  .speak-copy { padding-inline: var(--gutter); max-width: 720px; }
+  .speak-copy > * + * { margin-top: 1.1rem; }
+  .topics { display: grid; border-top: 1px solid var(--line-dark); }
+  .topics li { display: flex; gap: 1.2rem; align-items: baseline; padding: 0.9rem 0; border-bottom: 1px solid var(--line-dark); color: #b0aaa3; }
+  .topics strong { font-family: var(--serif); font-weight: 400; font-size: 1.15rem; color: #fff; }
+  .topics .n { font-size: var(--fs-micro); font-weight: 600; letter-spacing: 0.15em; color: var(--greige); }
+  .formats { color: var(--greige); letter-spacing: 0.04em; }
+  .speak-copy .btn-row { margin-top: 1.8rem; }
+  @media (min-width: 900px) {
+    .speak-grid { grid-template-columns: 40% 1fr; }
+    .speak-photo { min-height: 100%; }
+    .speak-copy { padding-inline: clamp(2.5rem, 5vw, 6rem); }
+  }
+
+  /* 03 Certification */
   .prog-head h2 { font-size: clamp(1.5rem, 0.9rem + 2.2vw, 2.8rem); text-wrap: initial; }
-  .list { display: grid; gap: 0; }
-  .prog { display: grid; gap: 2rem 5rem; padding-block: clamp(3rem, 2rem + 3vw, 5rem); border-top: 1px solid var(--line-strong); }
-  .prog:first-child { border-top: 0; padding-top: 0; }
-  .big { font-family: var(--serif); font-size: clamp(3.5rem, 2.5rem + 4vw, 6rem); line-height: 1; margin-top: 0.8rem; }
-  .logos { display: flex; gap: 1.2rem; align-items: center; margin-top: 1.6rem; }
-  .info > * + * { margin-top: 1.1rem; }
-  .acc { display: inline-flex; gap: 0.6rem; align-items: center; font-size: var(--fs-small); font-weight: 600; padding: 0.5rem 0.9rem; background: var(--off); }
-  .acc :global(svg) { color: var(--greige-deep); }
-  .info .btn-row { margin-top: 1.8rem; }
-  @media (min-width: 900px) { .prog { grid-template-columns: 320px 1fr; } }
+  .prog-grid { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: clamp(2.5rem, 2rem + 3vw, 4rem); }
+  .prog { background: #fff; padding: 2.2rem 2rem; display: grid; grid-template-rows: auto auto auto auto 1fr auto auto; gap: 0.8rem; }
+  .logos { display: flex; gap: 1rem; align-items: center; height: 64px; }
+  .logos :global(img) { height: 60px; width: auto; max-width: 120px; object-fit: contain; }
+  .code { font-family: var(--serif); font-size: clamp(2.6rem, 2rem + 2vw, 3.6rem); line-height: 1; margin-top: 0.8rem; }
+  .acc { display: inline-flex; gap: 0.5rem; align-items: center; width: fit-content; font-size: 0.78rem; font-weight: 600; padding: 0.4rem 0.75rem; background: var(--off); }
+  .acc :global(svg) { color: var(--greige-deep); flex: none; }
+  .role { color: var(--ink-soft); font-weight: 500; }
+  .prog-links { display: flex; flex-wrap: wrap; align-items: center; gap: 1.2rem 1.6rem; margin-top: 0.8rem; }
+  @media (min-width: 900px) { .prog-grid { grid-template-columns: repeat(3, 1fr); } }
+
+  .inhouse .btn-row { margin-top: 2rem; }
+
+  /* FAQ */
+  .qs { margin-top: 2.5rem; border-top: 1px solid var(--line-strong); }
+  details { border-bottom: 1px solid var(--line-strong); }
+  summary { list-style: none; display: flex; justify-content: space-between; gap: 1rem; align-items: center; padding: 1.2rem 0; cursor: pointer; font-family: var(--serif); font-size: 1.15rem; }
+  summary::-webkit-details-marker { display: none; }
+  summary :global(svg) { flex: none; transition: transform 0.3s var(--ease); }
+  details[open] summary :global(svg) { transform: rotate(45deg); }
+  details p { padding-bottom: 1.4rem; max-width: 62ch; }
 </style>

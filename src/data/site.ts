@@ -35,11 +35,22 @@ export const wa = (topic: WaTopic = "general", extra = "") =>
 
 export const nav = [
   { href: "/about", label: "About" },
-  { href: "/coaching", label: "Coaching" },
-  { href: "/speaking", label: "Speaking" },
   { href: "/programs", label: "Programs" },
   { href: "/contact", label: "Contact" },
 ];
+
+// Detail pages live on the business-unit websites; this site links out to them.
+const hade = "https://hade.belajaragile.com";
+const mybrain = "https://darudewayanto.github.io/mybrain-profile";
+export const links = {
+  hade,
+  hadeCorporate: `${hade}/solutions#corporate`,
+  hadeTransformation: `${hade}/solutions#transformation`,
+  hadeCertification: `${hade}/certification`,
+  hadeAi: `${hade}/hade-ai`,
+  mybrain: `${mybrain}/`,
+  mybrainServices: `${mybrain}/layanan`,
+};
 
 export const stats = [
   { value: "30+", label: "Years as corporate leader & entrepreneur" },
@@ -96,6 +107,7 @@ export const services = [
       "Succession, women leader & next-generation leader programs",
     ],
     wa: "coaching" as const,
+    details: { label: "Details on HADE", href: links.hadeCorporate },
   },
   {
     id: "transformation",
@@ -110,6 +122,7 @@ export const services = [
       "Coaching and learning culture advisory",
     ],
     wa: "transformation" as const,
+    details: { label: "Details on HADE", href: links.hadeTransformation },
   },
   {
     id: "profiling",
@@ -124,6 +137,7 @@ export const services = [
       "Delivered with MyBrain Indonesia",
     ],
     wa: "coaching" as const,
+    details: { label: "Details on MyBrain", href: links.mybrainServices },
   },
 ];
 
@@ -168,7 +182,8 @@ export const programs = [
     role: "Program Developer & Chief Instructor",
     text: "A professional agile coaching certification covering agile coaching foundations, advanced coaching techniques, team coaching & facilitation, and applied neuroscience for agility.",
     logos: ["icp-acc", "icagile"],
-    href: "https://hade.belajaragile.com/certification",
+    href: links.hadeCertification,
+    site: "HADE",
   },
   {
     code: "CBHC",
@@ -177,7 +192,8 @@ export const programs = [
     role: "Program Developer & Chief Instructor",
     text: "Coaching education built on the ICF Core Competencies, for leaders, consultants and professionals who want to coach to an international standard.",
     logos: ["icf-level1", "icf"],
-    href: "",
+    href: links.hadeCertification,
+    site: "HADE",
   },
   {
     code: "CHMP",
@@ -186,7 +202,8 @@ export const programs = [
     role: "Master Trainer, Master Practitioner & Chief Instructor",
     text: "Practitioner certification in the MyBrain Indicator of Neurological Dominance (MIND), applying neuroscience to coaching, leadership and team development.",
     logos: ["mind", "cce"],
-    href: "https://darudewayanto.github.io/mybrain-profile/",
+    href: links.mybrainServices,
+    site: "MyBrain",
   },
 ];
 
@@ -201,13 +218,13 @@ export const ventures = [
     logo: "hade-navy",
     name: "HADE",
     text: "Internationally accredited agile coaching firm for corporate and enterprise agile transformation in Indonesia, Hong Kong, Qatar and Australia.",
-    href: "https://hade.belajaragile.com",
+    href: links.hade,
   },
   {
     logo: "hade-ai",
     name: "HADE AI",
     text: "A large-language-model platform for digital learning. Top 10 finalist at the Startup World Cup.",
-    href: "https://hade.belajaragile.com/hade-ai",
+    href: links.hadeAi,
   },
   {
     logo: "agile-hijrah-coaching",
@@ -225,7 +242,7 @@ export const ventures = [
     logo: "mybrain",
     name: "MyBrain Indonesia",
     text: "Applied-neuroscience profiling and practitioner certification, licensed from MyBrain International, UK.",
-    href: "https://darudewayanto.github.io/mybrain-profile/",
+    href: links.mybrain,
   },
 ];
 

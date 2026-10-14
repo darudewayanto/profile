@@ -1,123 +1,16 @@
 ---
-import Base from "../layouts/Base.astro";
-import PageHero from "../components/PageHero.astro";
-import Image from "../components/Img.astro";
-import Icon from "../components/Icon.astro";
-import ConversationBand from "../components/ConversationBand.astro";
-import CtaBand from "../components/CtaBand.astro";
-import { services, wa, clients } from "../data/site";
-import lounge from "../assets/photos/daru-lounge.jpg";
-import jacket from "../assets/photos/daru-jacket.jpg";
-
-const steps = [
-  { title: "Conversation", text: "A free, confidential conversation to understand where you are, what's at stake and whether we're the right fit." },
-  { title: "Discovery", text: "Stakeholder input and, where useful, MIND neuro-dominance profiling to see how you think, decide and find energy." },
-  { title: "Coaching", text: "A focused engagement of regular sessions with clear goals agreed with you and, when relevant, your organization." },
-  { title: "Review", text: "We measure progress against the goals you set and the feedback of the people you lead, then plan what's next." },
-];
-const faqs = [
-  { q: "Who do you coach?", a: "CEOs, directors, founders and senior leaders, as well as leadership teams going through agile transformation. Many clients come from state-owned enterprises, multinationals, government institutions and growing family businesses." },
-  { q: "Do you coach in English or Bahasa Indonesia?", a: "Both. Sessions run in English or Bahasa Indonesia, in person in Jakarta or online anywhere in the world." },
-  { q: "How long is a coaching engagement?", a: "Most executive engagements run three to six months. Organization-wide transformation programs are designed with you and usually run longer." },
-  { q: "What does it cost?", a: "Every engagement is scoped to your goals and the number of leaders involved. Start with a conversation and you'll receive a clear proposal." },
-];
+// Merged into /programs; kept so old links still land in the right section.
+import { u } from "../lib/url";
+const to = u("/programs#coaching");
 ---
-<Base title="Coaching" description="Executive and agile leadership coaching, agile transformation advisory and applied-neuroscience profiling with ICF Master Certified Coach Daru Dewayanto.">
-  <PageHero eyebrow="Coaching" title="Become the leader your transformation needs" lead="Coaching with an ICF Master Certified Coach and ICAgile Certified Expert in Agile Coaching, for leaders and organizations ready to change how they work." image={lounge} alt="" position="40% 40%">
-    <div class="btn-row"><a class="btn btn-white" href={wa("coaching")} target="_blank" rel="noopener">Schedule a Consultation</a></div>
-  </PageHero>
-
-  {services.map((s, i) => (
-    <section id={s.id} class:list={["svc section", { off: i % 2 === 1 }]}>
-      <div class="wrap row">
-        <div class="head" data-reveal>
-          <span class="idx">0{i + 1}</span>
-          <Icon name={s.icon} size={36} />
-          <h2 class="h2">{s.title}</h2>
-        </div>
-        <div class="body" data-reveal style="--d:.1s">
-          <p class="lead">{s.text}</p>
-          <ul class="items" role="list">
-            {s.items.map((it) => <li><Icon name="check" size={16} /> {it}</li>)}
-          </ul>
-          <a class="btn" href={wa(s.wa)} target="_blank" rel="noopener">Discuss this <Icon name="arrow-right" /></a>
-        </div>
-      </div>
-    </section>
-  ))}
-
-  <section class="process dark grain section">
-    <div class="wrap">
-      <div class="center wrap-narrow" data-reveal>
-        <span class="eyebrow">How we work together</span>
-        <h2 class="h2 caps">The Coaching Journey</h2>
-        <hr class="rule" />
-      </div>
-      <ol class="steps" role="list">
-        {steps.map((st, i) => (
-          <li data-reveal style={`--d:${i * 0.08}s`}>
-            <span class="n">Step 0{i + 1}</span>
-            <h3 class="h3">{st.title}</h3>
-            <p>{st.text}</p>
-          </li>
-        ))}
-      </ol>
-    </div>
-  </section>
-
-  <section class="faq section">
-    <div class="wrap faq-grid">
-      <div class="media fphoto" data-reveal>
-        <Image src={jacket} alt="Coach Daru Dewayanto" widths={[500, 900]} sizes="(min-width: 900px) 400px, 90vw" style="object-position:50% 20%" />
-      </div>
-      <div data-reveal style="--d:.1s">
-        <span class="eyebrow">Questions</span>
-        <h2 class="h2">Frequently asked</h2>
-        <div class="qs">
-          {faqs.map((f) => (
-            <details>
-              <summary>{f.q}<Icon name="plus" size={18} /></summary>
-              <p class="muted">{f.a}</p>
-            </details>
-          ))}
-        </div>
-        <p class="small muted clients">Leaders I've worked with come from {clients.slice(0, 8).join(", ")} and many more.</p>
-      </div>
-    </div>
-  </section>
-
-  <ConversationBand />
-  <CtaBand topic="coaching" />
-</Base>
-
-<style>
-  .row { display: grid; gap: 2rem 5rem; }
-  .head { display: grid; gap: 1.2rem; align-content: start; }
-  .head :global(svg) { color: var(--greige-deep); }
-  .idx { font-family: var(--serif); font-size: 1rem; color: var(--muted); }
-  .body > * + * { margin-top: 1.8rem; }
-  .items { display: grid; gap: 0.2rem; border-top: 1px solid var(--line); }
-  .items li { display: flex; gap: 0.8rem; align-items: center; padding: 0.8rem 0; border-bottom: 1px solid var(--line); font-weight: 500; }
-  .items :global(svg) { color: var(--greige-deep); flex: none; }
-  @media (min-width: 900px) { .row { grid-template-columns: 1fr 1.3fr; } }
-
-  .steps { display: grid; gap: 2px; margin-top: 3rem; }
-  .steps li { padding: 2.2rem 1.8rem; background: rgba(255, 255, 255, 0.03); border-top: 1px solid var(--greige-deep); }
-  .steps .n { font-size: var(--fs-micro); font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--greige); }
-  .steps h3 { margin: 0.8rem 0; }
-  .steps p { font-size: var(--fs-small); color: #b0aaa3; }
-  @media (min-width: 900px) { .steps { grid-template-columns: repeat(4, 1fr); } }
-
-  .faq-grid { display: grid; gap: 3rem 5rem; align-items: start; }
-  .fphoto { aspect-ratio: 4 / 5; max-width: 400px; }
-  .faq h2 { margin-top: 0.8rem; }
-  .qs { margin-top: 2rem; border-top: 1px solid var(--line-strong); }
-  details { border-bottom: 1px solid var(--line-strong); }
-  summary { list-style: none; display: flex; justify-content: space-between; gap: 1rem; align-items: center; padding: 1.2rem 0; cursor: pointer; font-family: var(--serif); font-size: 1.15rem; }
-  summary::-webkit-details-marker { display: none; }
-  summary :global(svg) { flex: none; transition: transform 0.3s var(--ease); }
-  details[open] summary :global(svg) { transform: rotate(45deg); }
-  details p { padding-bottom: 1.4rem; max-width: 60ch; }
-  .clients { margin-top: 2rem; }
-  @media (min-width: 900px) { .faq-grid { grid-template-columns: 400px 1fr; } }
-</style>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content={`0; url=${to}`} />
+    <link rel="canonical" href={to} />
+    <meta name="robots" content="noindex" />
+    <title>Programs · Coach Daru Dewayanto</title>
+  </head>
+  <body><a href={to}>Continue to Programs</a></body>
+</html>

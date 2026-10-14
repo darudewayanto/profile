@@ -1,11 +1,12 @@
 ---
 import Base from "../layouts/Base.astro";
+import { u } from "../lib/url";
 import PageHero from "../components/PageHero.astro";
 import Image from "../components/Img.astro";
 import CtaBand from "../components/CtaBand.astro";
 import Gallery from "../components/Gallery.astro";
 import { badgeImg, brandImg, crispWidth } from "../lib/assets";
-import { site, journey, stats, masterCredentials, accreditedMembers, awards } from "../data/site";
+import { site, journey, stats, masterCredentials, accreditedMembers, awards, ventures } from "../data/site";
 import portrait from "../assets/photos/daru-portrait.png";
 import lounge from "../assets/photos/daru-lounge.jpg";
 import entStage from "../assets/photos/daru-entrepreneur-stage.jpg";
@@ -95,11 +96,22 @@ import city from "../assets/photos/city.png";
         </ul>
       </div>
     </div>
-    <div class="wrap brands" data-reveal>
-      <Image src={brandImg["master-hijrah-coach"]} alt="Master Hijrah Coach" height={120} class="badge-img" />
-      <Image src={brandImg["center-of-agility"]} alt="Center of Agility" height={120} class="badge-img" />
-      <Image src={brandImg["hade-navy"]} alt="HADE" height={64} class="badge-img" />
-    </div>
+    <ul class="wrap brands" role="list" data-reveal>
+      {ventures.map((v) => {
+        const img = brandImg[v.logo];
+        const wide = img.width / img.height > 1.5;
+        const href = v.href || u("/programs#ventures");
+        // Optical sizing: thin wordmarks need more width, heavy ones less, so all six read equally large.
+        const w = { "agile-hijrah-coaching": 190, "hade-navy": 112, "hade-ai": 118 }[v.logo] ?? 136;
+        return (
+          <li>
+            <a href={href} target={v.href ? "_blank" : undefined} rel={v.href ? "noopener" : undefined} title={v.name}>
+              <Image src={img} alt={v.name} widths={[Math.min(img.width, 400)]} sizes="180px" class:list={["badge-img", { wide }]} style={wide ? `width:${w}px` : undefined} />
+            </a>
+          </li>
+        );
+      })}
+    </ul>
   </section>
 
   <CtaBand />
@@ -133,6 +145,13 @@ import city from "../assets/photos/city.png";
   .ph { width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--line-strong); display: grid; place-items: center; justify-self: center; font-family: var(--serif); }
   .yr { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em; color: var(--greige-deep); text-transform: uppercase; }
   .list strong { font-weight: 600; font-size: var(--fs-small); }
-  .brands { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 3rem 4rem; margin-top: 5rem; padding-top: 3rem; border-top: 1px solid var(--line); }
+  /* All ventures in one row: equal slots, equal logo height, wide wordmarks capped by width. */
+  .brands { list-style: none; padding: 3rem 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem 1.5rem; align-items: center; margin-top: 5rem; border-top: 1px solid var(--line); }
+  .brands li { display: flex; justify-content: center; }
+  .brands a { display: flex; align-items: center; justify-content: center; height: 68px; opacity: 0.85; transition: opacity 0.25s, transform 0.25s var(--ease); }
+  .brands a:hover { opacity: 1; transform: translateY(-2px); }
+  .brands :global(img) { height: 62px; width: auto; max-width: 100%; object-fit: contain; }
+  .brands :global(img.wide) { height: auto; max-width: 100%; max-height: 56px; }
+  @media (min-width: 900px) { .brands { grid-template-columns: repeat(6, 1fr); } }
   @media (min-width: 900px) { .two { grid-template-columns: 1fr 1fr; } }
 </style>

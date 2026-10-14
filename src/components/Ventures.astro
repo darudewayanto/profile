@@ -7,7 +7,7 @@ import { ventures, clients } from "../data/site";
 interface Props { showClients?: boolean; tone?: string; eyebrow?: string; title?: string }
 const { showClients = false, tone = "", eyebrow = "Founder & CEO", title = "The Ventures I Lead" } = Astro.props;
 ---
-  <section class:list={["ventures section", tone]}>
+  <section id="ventures" class:list={["ventures section", tone]}>
     <div class="wrap">
       <div class="center wrap-narrow" data-reveal>
         {eyebrow && <span class="eyebrow">{eyebrow}</span>}
