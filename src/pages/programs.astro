@@ -17,6 +17,10 @@ import entStage from "../assets/photos/daru-entrepreneur-stage.jpg";
   <Ventures tone="off" eyebrow="" title="Founder & Program Designer" />
 
   <section class="section">
+    <div class="wrap-narrow center prog-head" data-reveal>
+      <h2 class="h2 caps">International Certified & Accredited Agile Coaching Certification</h2>
+      <hr class="rule" />
+    </div>
     <div class="wrap list">
       {programs.map((p, i) => (
         <article class="prog" data-reveal>
@@ -56,6 +60,7 @@ import entStage from "../assets/photos/daru-entrepreneur-stage.jpg";
 </Base>
 
 <style>
+  .prog-head { margin-bottom: clamp(2.5rem, 2rem + 3vw, 4.5rem); }
   .list { display: grid; gap: 0; }
   .prog { display: grid; gap: 2rem 5rem; padding-block: clamp(3rem, 2rem + 3vw, 5rem); border-top: 1px solid var(--line-strong); }
   .prog:first-child { border-top: 0; padding-top: 0; }
