@@ -4,6 +4,7 @@ import PageHero from "../components/PageHero.astro";
 import Image from "../components/Img.astro";
 import Icon from "../components/Icon.astro";
 import CtaBand from "../components/CtaBand.astro";
+import Ventures from "../components/Ventures.astro";
 import { badgeImg } from "../lib/assets";
 import { programs, wa } from "../data/site";
 import entStage from "../assets/photos/daru-entrepreneur-stage.jpg";
@@ -48,6 +49,8 @@ import entStage from "../assets/photos/daru-entrepreneur-stage.jpg";
       <div class="btn-row" style="margin-top:2rem"><a class="btn btn-white" href={wa("transformation")} target="_blank" rel="noopener">Discuss an In-house Batch</a></div>
     </div>
   </section>
+
+  <Ventures tone="off" />
 
   <CtaBand topic="programs" />
 </Base>
