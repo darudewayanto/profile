@@ -17,7 +17,7 @@ export const site = {
   whatsapp: "628111881877",
   countries: ["Indonesia", "Hong Kong", "Qatar", "Australia"],
   // Site-wide photo treatment: "gold" (warm monochrome), "gray" (black & white) or "none".
-  photoFilter: "gold" as "gold" | "gray" | "none",
+  photoFilter: "gray" as "gold" | "gray" | "none",
 };
 
 const waMessages = {
