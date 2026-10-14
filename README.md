@@ -10,6 +10,13 @@ npm run dev      # http://localhost:4323
 npm run build    # hasil statis di dist/
 ```
 
+## Tayang sementara: GitHub Pages
+
+- Live: https://darudewayanto.github.io/profile/ (noindex, tidak diindeks Google)
+- Repo: https://github.com/darudewayanto/profile
+- Setiap `git push` ke `main` otomatis build + deploy lewat `.github/workflows/deploy.yml` (±1 menit).
+- Pindah ke domain sendiri nanti: ubah env di workflow (`SITE_URL`, hapus `BASE_PATH` & `PUBLIC_NOINDEX`), lalu pasang custom domain.
+
 ## Mengubah konten
 
 Semua teks, angka, kredensial, topik speaking, program & nomor WA ada di **`src/data/site.ts`**.
