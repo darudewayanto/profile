@@ -16,7 +16,7 @@ const ogImage = new URL(u("/og.jpg"), siteUrl).href;
 const noindex = import.meta.env.PUBLIC_NOINDEX === "true";
 ---
 <!doctype html>
-<html lang="en">
+<html lang="en" data-photo-filter={site.photoFilter}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />

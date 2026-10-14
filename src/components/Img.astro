@@ -1,8 +1,12 @@
 ---
 // Wraps astro:assets <Image> so fixed-size images (logos, badges) also ship a 2x
 // variant for retina screens, and photos keep a high quality setting (no soft/blurry output).
+// Anything from src/assets/photos gets the `photo` class, which carries the site-wide photo filter.
 import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+const photos = Object.values(import.meta.glob<{ default: ImageMetadata }>("../assets/photos/*", { eager: true })).map((m) => m.default);
 const props = Astro.props as any;
 const extra = props.widths || props.densities ? {} : { densities: [1, 2] };
+const cls = [props.class, photos.includes(props.src) && "photo"].filter(Boolean).join(" ") || undefined;
 ---
-<Image quality={90} {...props} {...extra} />
+<Image quality={90} {...props} {...extra} class={cls} />

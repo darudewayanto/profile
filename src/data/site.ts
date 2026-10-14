@@ -16,6 +16,8 @@ export const site = {
   phoneDisplay: "+62 811 1881 877",
   whatsapp: "628111881877",
   countries: ["Indonesia", "Hong Kong", "Qatar", "Australia"],
+  // Site-wide photo treatment: "gold" (warm monochrome), "gray" (black & white) or "none".
+  photoFilter: "gold" as "gold" | "gray" | "none",
 };
 
 const waMessages = {
