@@ -192,22 +192,34 @@ export const programs = [
 
 export const ventures = [
   {
+    logo: "hijrah-coach",
+    name: "Hijrah Coach Group",
+    text: "The parent group: 27 coaching firms, 180 associate coaches and 1,800 graduate coaches, with subsidiaries and partners from Indonesia to the Gulf.",
+    href: "",
+  },
+  {
     logo: "hade-navy",
     name: "HADE",
-    text: "Internationally accredited agile coaching firm: 28 firms and 180 associate coaches across Indonesia, Hong Kong, Qatar, Australia and the Middle East.",
+    text: "Internationally accredited agile coaching firm for corporate and enterprise agile transformation in Indonesia, Hong Kong, Qatar and Australia.",
     href: "https://hade.belajaragile.com",
+  },
+  {
+    logo: "hade-ai-emblem",
+    name: "HADE AI",
+    text: "A large-language-model platform for digital learning. Top 10 finalist at the Startup World Cup.",
+    href: "https://hade.belajaragile.com/hade-ai",
+  },
+  {
+    logo: "agile-hijrah-coaching",
+    name: "Agile Hijrah Coaching (AHC)",
+    text: "A movement serving the ummah: agile coaching certification for ustadz/ah and leaders in dakwah, education and humanitarian work. 250 graduates, 23 batches, 70 pondok & schools in 9 cities.",
+    href: "",
   },
   {
     logo: "center-of-agility",
     name: "Center of Agility",
-    text: "The home of HADE's agile transformation, assessment and advisory practice.",
+    text: "Agile capability for corporates and universities, from ITB and Telkom University to UPN, Trisakti and Udinus.",
     href: "",
-  },
-  {
-    logo: "emblem-gold",
-    name: "HADE AI",
-    text: "A large-language-model platform for digital learning. Top 10 finalist at the Startup World Cup.",
-    href: "https://hade.belajaragile.com/hade-ai",
   },
   {
     logo: "mybrain",

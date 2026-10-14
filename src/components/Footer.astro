@@ -1,9 +1,7 @@
 ---
 import { u } from "../lib/url";
-import Image from "./Img.astro";
 import Icon from "./Icon.astro";
 import { nav, site, wa } from "../data/site";
-import { brandImg } from "../lib/assets";
 const year = new Date().getFullYear();
 ---
 <footer class="footer darker grain">
@@ -11,10 +9,6 @@ const year = new Date().getFullYear();
     <div class="id">
       <a href={u("/")} class="name">Daru Dewayanto</a>
       <p class="muted small">{site.postnominals}<br />{site.role}</p>
-      <div class="logos">
-        <Image src={brandImg["hade-white"]} alt="HADE" width={84} />
-        <Image src={brandImg["emblem-white"]} alt="HADE AI" width={66} />
-      </div>
     </div>
 
     <nav aria-label="Footer">
@@ -42,7 +36,6 @@ const year = new Date().getFullYear();
   .top { display: grid; gap: 3rem; }
   .name { font-family: var(--serif); font-size: 1.6rem; text-transform: uppercase; letter-spacing: 0.05em; color: #fff; }
   .id p { margin-top: 1rem; max-width: 34ch; line-height: 1.7; }
-  .logos { display: flex; align-items: center; gap: 1.4rem; margin-top: 1.8rem; opacity: 0.85; }
   nav, .contact { display: grid; align-content: start; gap: 0.55rem; }
   nav a, .contact a { font-size: var(--fs-small); width: fit-content; transition: color 0.2s; }
   nav a:hover, .contact a:hover { color: #fff; }

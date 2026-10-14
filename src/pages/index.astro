@@ -230,7 +230,7 @@ const isWide = (key: string) => badgeImg[key].width / badgeImg[key].height > 1.5
           const Tag = v.href ? "a" : "div";
           return (
             <Tag class="venture" href={v.href || undefined} target={v.href ? "_blank" : undefined} rel={v.href ? "noopener" : undefined} data-reveal style={`--d:${i * 0.08}s`}>
-              <div class="v-logo"><Image src={brandImg[v.logo]} alt={v.name} height={v.logo === "hade-navy" ? 46 : 72} class="badge-img" /></div>
+              <div class="v-logo"><Image src={brandImg[v.logo]} alt={v.name} widths={[Math.min(brandImg[v.logo].width, 400)]} sizes="160px" class:list={["badge-img", { wide: brandImg[v.logo].width / brandImg[v.logo].height > 1.5 }]} /></div>
               <h3 class="h3">{v.name}</h3>
               <p class="small muted">{v.text}</p>
               {v.href && <span class="more">Visit <Icon name="arrow-up-right" size={14} /></span>}
@@ -277,7 +277,7 @@ const isWide = (key: string) => badgeImg[key].width / badgeImg[key].height > 1.5
   .badges li { display: grid; justify-items: center; align-content: start; gap: 0.3rem; text-align: center; max-width: 170px; }
   .badges :global(img) { margin-bottom: 0.7rem; }
   .badges strong { font-size: var(--fs-small); font-weight: 600; line-height: 1.4; }
-  .badges :global(img) { height: clamp(96px, 8vw + 40px, 132px); }
+  .badges :global(img) { height: clamp(84px, 6vw + 36px, 112px); }
   .badges span { font-size: 0.78rem; color: var(--muted); }
   @media (min-width: 900px) { .proof-grid { grid-template-columns: 1fr 1.2fr; } .badges { justify-content: flex-end; } }
 
@@ -336,13 +336,13 @@ const isWide = (key: string) => badgeImg[key].width / badgeImg[key].height > 1.5
   .cred-block { margin-top: clamp(2.5rem, 2rem + 2vw, 4rem); }
   .cred-block > h3 { padding-bottom: 1rem; margin-bottom: 1.5rem; }
   .tiles { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); grid-template-columns: repeat(2, 1fr); }
-  .tile { background: #fff; display: grid; grid-template-rows: auto auto 1fr; justify-items: center; text-align: center; padding: 1.8rem 1rem; }
-  .logo { height: 104px; width: 100%; display: flex; align-items: center; justify-content: center; }
-  .logo :global(img) { width: auto; height: 96px; max-width: 100%; object-fit: contain; }
-  .logo :global(img.wide) { height: auto; width: 150px; max-height: 72px; }
+  .tile { background: #fff; display: grid; grid-template-rows: auto auto 1fr; justify-items: center; text-align: center; padding: 1.6rem 1rem; }
+  .logo { height: 80px; width: 100%; display: flex; align-items: center; justify-content: center; }
+  .logo :global(img) { width: auto; height: 72px; max-width: 100%; object-fit: contain; }
+  .logo :global(img.wide) { height: auto; width: 116px; max-height: 54px; }
   .tile strong { margin-top: 1.2rem; font-size: var(--fs-small); font-weight: 600; line-height: 1.4; min-height: 2.8em; display: flex; align-items: flex-start; justify-content: center; max-width: 20ch; }
   .tile .by { margin-top: 0.3rem; font-size: 0.75rem; color: var(--muted); line-height: 1.5; max-width: 22ch; }
-  .three .tile { padding-block: 1.5rem; }
+  .three .tile { padding-block: 1.3rem; }
   .cred-split { display: grid; gap: 0 2.5rem; }
   .cred-more { margin-top: 3rem; }
   @media (min-width: 700px) { .tiles { grid-template-columns: repeat(3, 1fr); } }
@@ -357,15 +357,17 @@ const isWide = (key: string) => badgeImg[key].width / badgeImg[key].height > 1.5
   .award-list strong { font-family: var(--serif); font-weight: 400; font-size: 1.15rem; color: #fff; }
   @media (min-width: 900px) { .awards-grid { grid-template-columns: 1fr 1fr; } }
 
-  /* Ventures */
+  /* Ventures: one logo box size for every brand, wide wordmarks capped by width. */
   .v-grid { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: clamp(2rem, 4vw, 3.5rem); }
-  .venture { background: #fff; padding: 2.2rem 1.8rem; display: grid; align-content: start; gap: 0.8rem; transition: background 0.3s; }
+  .venture { background: #fff; padding: 2.2rem 2rem; display: grid; grid-template-rows: auto auto 1fr auto; align-content: stretch; gap: 0.8rem; transition: background 0.3s; }
   a.venture:hover { background: var(--off); }
-  .v-logo { height: 76px; display: flex; align-items: center; }
-  .venture h3 { margin-top: 0.6rem; }
-  .venture .more { margin-top: 0.6rem; }
+  .v-logo { height: 64px; display: flex; align-items: center; }
+  .v-logo :global(img) { height: 60px; width: auto; max-width: 140px; object-fit: contain; }
+  .v-logo :global(img.wide) { height: auto; width: 168px; max-width: 100%; max-height: 60px; }
+  .venture h3 { margin-top: 0.8rem; }
+  .venture .more { margin-top: 0.4rem; }
   .clients { margin-top: 3rem; text-align: center; color: var(--ink-soft); line-height: 2; }
   .clients .eyebrow { margin-bottom: 0.6rem; }
   @media (min-width: 640px) { .v-grid { grid-template-columns: 1fr 1fr; } }
-  @media (min-width: 1100px) { .v-grid { grid-template-columns: repeat(4, 1fr); } }
+  @media (min-width: 1000px) { .v-grid { grid-template-columns: repeat(3, 1fr); } }
 </style>

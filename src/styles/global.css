@@ -225,5 +225,5 @@ p { text-wrap: pretty; }
    Every photo is toned down to one mood so the page reads calm and editorial.
    Switch between "gold" and "gray" with `photoFilter` in src/data/site.ts. */
 img.photo { transition: filter 0.6s var(--ease); }
-[data-photo-filter="gray"] img.photo { filter: grayscale(1) contrast(1.08) brightness(0.68); }
+[data-photo-filter="gray"] img.photo { filter: grayscale(1) contrast(1.1) brightness(0.72); }
 [data-photo-filter="gold"] img.photo { filter: grayscale(1) sepia(0.65) saturate(1.15) hue-rotate(-6deg) contrast(0.98) brightness(0.86); }
