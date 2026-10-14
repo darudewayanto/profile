@@ -56,12 +56,12 @@ export const masterBadges = [
 ];
 
 export const masterCredentials = [
-  { logo: "mcc", name: "MCC", full: "Master Certified Coach (MCC by ICF)" },
-  { logo: "ice-ac", name: "ICE-AC", full: "IC-Agile Expert in Agile Coaching (ICE-AC by IC-Agile)" },
-  { logo: "mind-master", name: "MiND Master Practitioner", full: "MiND Master Practitioner (by MyBrain)" },
-  { logo: "ecpc", name: "ECPC", full: "Erickson Certified Professional Coach, Erickson Coaching International" },
-  { logo: "cca-coach", name: "CMC", full: "Certified Master Coach, Corporate Coach Academy" },
-  { logo: "marshall-goldsmith", name: "Stakeholder Centered Coaching", full: "Marshall Goldsmith", wide: true },
+  { logo: "mcc", name: "Master Certified Coach", by: "MCC by ICF" },
+  { logo: "ice-ac", name: "IC-Agile Expert in Agile Coaching", by: "ICE-AC by IC-Agile" },
+  { logo: "mind-master", name: "MiND Master Practitioner", by: "by MyBrain" },
+  { logo: "ecpc", name: "Erickson Certified Professional Coach", by: "ECPC by Erickson Coaching International" },
+  { logo: "cca-coach", name: "Certified Master Coach", by: "CMC by Corporate Coach Academy" },
+  { logo: "marshall-goldsmith", name: "Stakeholder Centered Coaching", by: "by Marshall Goldsmith" },
 ];
 
 export const accreditedMembers = [
@@ -73,7 +73,7 @@ export const accreditedMembers = [
   { logo: "erickson", name: "Erickson", full: "Erickson Coaching International" },
 ];
 
-export const instructorBadges = ["icf-level1", "cce", "mind", "icagile-instructor", "accredited-course"];
+export const instructorBadges = ["icp-acc", "icf-level1", "cce", "mind", "icagile-instructor", "accredited-course"];
 
 export const awards = [
   { year: "2017 · 2018 · 2019", title: "100 Best Global Coaching Leader", by: "World Coaching Congress (WCC)" },

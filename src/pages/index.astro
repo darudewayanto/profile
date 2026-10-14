@@ -14,6 +14,9 @@ import brick from "../assets/photos/daru-brick.jpg";
 import jacket from "../assets/photos/daru-jacket.jpg";
 import speaking from "../assets/photos/daru-speaking.jpg";
 import award100 from "../assets/photos/award-100-best.png";
+
+// Wordmarks (wide logos) and round/square badges get different boxes so they carry the same visual weight.
+const isWide = (key: string) => badgeImg[key].width / badgeImg[key].height > 1.5;
 ---
 <Base>
   <!-- HERO -->
@@ -155,14 +158,12 @@ import award100 from "../assets/photos/award-100-best.png";
 
       <div class="cred-block" data-reveal>
         <h3 class="eyebrow">Master coach credential</h3>
-        <ul class="cred-row" role="list">
+        <ul class="tiles six" role="list">
           {masterCredentials.map((c) => (
-            <li>
-              {c.logo
-                ? <Image src={badgeImg[c.logo]} alt={c.full} width={crispWidth(badgeImg[c.logo], c.wide ? 190 : 96)} class:list={["badge-img", { wide: c.wide }]} />
-                : <span class="txt-badge">Marshall<br />Goldsmith</span>}
+            <li class="tile">
+              <span class="logo"><Image src={badgeImg[c.logo]} alt="" widths={[Math.min(badgeImg[c.logo].width, 400)]} sizes="180px" class:list={["badge-img", { wide: isWide(c.logo) }]} /></span>
               <strong>{c.name}</strong>
-              <span>{c.full}</span>
+              <span class="by">{c.by}</span>
             </li>
           ))}
         </ul>
@@ -171,22 +172,26 @@ import award100 from "../assets/photos/award-100-best.png";
       <div class="cred-split">
         <div class="cred-block" data-reveal>
           <h3 class="eyebrow">Accredited member</h3>
-          <ul class="logo-row" role="list">
+          <ul class="tiles three" role="list">
             {accreditedMembers.map((m) => (
-              <li title={m.full}><Image src={badgeImg[m.logo]} alt={`${m.name}, ${m.full}`} height={56} class="badge-img" /></li>
+              <li class="tile" title={m.full}>
+                <span class="logo"><Image src={badgeImg[m.logo]} alt={`${m.name}, ${m.full}`} widths={[Math.min(badgeImg[m.logo].width, 400)]} sizes="180px" class:list={["badge-img", { wide: isWide(m.logo) }]} /></span>
+              </li>
             ))}
           </ul>
         </div>
         <div class="cred-block" data-reveal style="--d:.1s">
           <h3 class="eyebrow">Chief instructor & program designer</h3>
-          <ul class="logo-row" role="list">
+          <ul class="tiles three" role="list">
             {instructorBadges.map((b) => (
-              <li><Image src={badgeImg[b]} alt="" height={64} class="badge-img" /></li>
+              <li class="tile">
+                <span class="logo"><Image src={badgeImg[b]} alt="" widths={[Math.min(badgeImg[b].width, 400)]} sizes="180px" class:list={["badge-img", { wide: isWide(b) }]} /></span>
+              </li>
             ))}
           </ul>
-          <a class="link-line" href={u("/programs")}>See the certification programs <Icon name="arrow-right" /></a>
         </div>
       </div>
+      <p class="center cred-more"><a class="link-line" href={u("/programs")}>See the certification programs <Icon name="arrow-right" /></a></p>
     </div>
   </section>
 
@@ -327,21 +332,21 @@ import award100 from "../assets/photos/award-100-best.png";
     .speak-copy { padding-inline: clamp(2.5rem, 5vw, 6rem); }
   }
 
-  /* Credentials */
+  /* Credentials: every logo sits in an identical tile, so sizes and spacing stay consistent. */
   .cred-block { margin-top: clamp(2.5rem, 2rem + 2vw, 4rem); }
-  .cred-block > h3 { padding-bottom: 1rem; border-bottom: 1px solid var(--line); margin-bottom: 2rem; }
-  .cred-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem 1.5rem; }
-  .cred-row li { display: grid; justify-items: center; text-align: center; align-content: start; gap: 0.35rem; }
-  .cred-row :global(img), .txt-badge { height: 96px; margin-bottom: 0.8rem; }
-  .cred-row :global(img.wide) { height: auto; width: 190px; max-width: 100%; margin-block: 12px calc(0.8rem + 11px); }
-  .txt-badge { display: grid; place-items: center; width: 96px; border-radius: 50%; border: 1px solid var(--line-strong); font-family: var(--serif); font-size: 0.78rem; line-height: 1.25; }
-  .cred-row strong { font-size: var(--fs-small); font-weight: 600; }
-  .cred-row span:not(.txt-badge) { font-size: 0.75rem; color: var(--muted); line-height: 1.5; max-width: 22ch; }
-  .cred-split { display: grid; gap: 0 4rem; }
-  .logo-row { display: flex; flex-wrap: wrap; align-items: center; gap: 1.6rem 2.2rem; }
-  .logo-row + .link-line { margin-top: 2rem; }
-  @media (min-width: 700px) { .cred-row { grid-template-columns: repeat(3, 1fr); } }
-  @media (min-width: 1000px) { .cred-row { grid-template-columns: repeat(6, 1fr); } .cred-split { grid-template-columns: 1fr 1fr; } }
+  .cred-block > h3 { padding-bottom: 1rem; margin-bottom: 1.5rem; }
+  .tiles { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); grid-template-columns: repeat(2, 1fr); }
+  .tile { background: #fff; display: grid; grid-template-rows: auto auto 1fr; justify-items: center; text-align: center; padding: 1.8rem 1rem; }
+  .logo { height: 104px; width: 100%; display: flex; align-items: center; justify-content: center; }
+  .logo :global(img) { width: auto; height: 96px; max-width: 100%; object-fit: contain; }
+  .logo :global(img.wide) { height: auto; width: 150px; max-height: 72px; }
+  .tile strong { margin-top: 1.2rem; font-size: var(--fs-small); font-weight: 600; line-height: 1.4; min-height: 2.8em; display: flex; align-items: flex-start; justify-content: center; max-width: 20ch; }
+  .tile .by { margin-top: 0.3rem; font-size: 0.75rem; color: var(--muted); line-height: 1.5; max-width: 22ch; }
+  .three .tile { padding-block: 1.5rem; }
+  .cred-split { display: grid; gap: 0 2.5rem; }
+  .cred-more { margin-top: 3rem; }
+  @media (min-width: 700px) { .tiles { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 1000px) { .six { grid-template-columns: repeat(6, 1fr); } .cred-split { grid-template-columns: 1fr 1fr; } }
 
   /* Awards */
   .awards-grid { display: grid; gap: clamp(2.5rem, 4vw, 5rem); align-items: center; }

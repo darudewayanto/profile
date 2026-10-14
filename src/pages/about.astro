@@ -74,8 +74,8 @@ import city from "../assets/photos/city.png";
         <ul class="list" role="list">
           {masterCredentials.map((c) => (
             <li>
-              {c.logo ? <Image src={badgeImg[c.logo]} alt="" width={crispWidth(badgeImg[c.logo], c.wide ? 80 : 64)} class="badge-img" /> : <span class="ph" aria-hidden="true">MG</span>}
-              <span><strong>{c.name}</strong><br /><span class="muted small">{c.full}</span></span>
+              <span class="logo-box"><Image src={badgeImg[c.logo]} alt="" widths={[Math.min(badgeImg[c.logo].width, 240)]} sizes="80px" class="badge-img" /></span>
+              <span><strong>{c.name}</strong><br /><span class="muted small">{c.by}</span></span>
             </li>
           ))}
         </ul>
@@ -85,7 +85,7 @@ import city from "../assets/photos/city.png";
         <ul class="list" role="list">
           {accreditedMembers.map((m) => (
             <li>
-              <span class="logo-box"><Image src={badgeImg[m.logo]} alt="" height={36} class="badge-img" /></span>
+              <span class="logo-box"><Image src={badgeImg[m.logo]} alt="" widths={[Math.min(badgeImg[m.logo].width, 240)]} sizes="80px" class="badge-img" /></span>
               <span><strong>{m.name}</strong><br /><span class="muted small">{m.full}</span></span>
             </li>
           ))}
@@ -135,8 +135,8 @@ import city from "../assets/photos/city.png";
   .two { display: grid; gap: 3rem 5rem; }
   .list { margin-top: 1.2rem; }
   .list li { display: grid; grid-template-columns: 80px 1fr; gap: 1.2rem; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--line); line-height: 1.5; }
-  .list :global(img) { max-height: 64px; justify-self: center; }
-  .logo-box { display: grid; place-items: center; }
+  .logo-box { display: grid; place-items: center; width: 80px; height: 56px; }
+  .logo-box :global(img) { max-width: 80px; max-height: 56px; width: auto; height: auto; object-fit: contain; }
   .ph { width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--line-strong); display: grid; place-items: center; justify-self: center; font-family: var(--serif); }
   .yr { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em; color: var(--greige-deep); text-transform: uppercase; }
   .list strong { font-weight: 600; font-size: var(--fs-small); }
