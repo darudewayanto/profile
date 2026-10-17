@@ -10,6 +10,12 @@ npm run dev      # http://localhost:4323
 npm run build    # hasil statis di dist/
 ```
 
+## Live: coachdaru.belajaragile.com (Firebase)
+
+- Live: https://coachdaru.belajaragile.com (situs Firebase `coachdaru-belajaragile` di project `hade-community`; DNS CNAME di Jagoan Hosting → `coachdaru-belajaragile.web.app`)
+- Deploy manual: `npm run deploy:firebase` (CLI login daru.dewayanto@gmail.com) — TIDAK otomatis dari git push
+- Masih noindex. Hapus `PUBLIC_NOINDEX=true` di script itu saat siap diindeks Google.
+
 ## Tayang sementara: GitHub Pages
 
 - Live: https://darudewayanto.github.io/profile/ (noindex, tidak diindeks Google)
@@ -25,7 +31,7 @@ Logo/badge tidak pernah ditampilkan lebih besar dari setengah resolusi aslinya (
 
 ## Sebelum go-live
 
-- [ ] Domain (mis. darudewayanto.com / coachdaru.com) → `astro.config.mjs` & `site.url`
+- [x] Domain coachdaru.belajaragile.com (Firebase)
 - [ ] Review topik speaking, FAQ & timeline (draf dari compro, perlu konfirmasi Daru)
 - [ ] Testimoni klien (`testimonials`)
 - [ ] Email pribadi (sekarang salam@hijrahcoach.co.id) & link LinkedIn/Instagram/YouTube

@@ -10,8 +10,7 @@ export const site = {
   tagline: "Master Coach for Agile Leaders",
   description:
     "Daru Dewayanto (Coach Daru), MCC, ICE-AC, is an internationally accredited, award-winning master agile coach. Executive coaching, agile leadership transformation and keynote speaking across Indonesia, Hong Kong, Qatar and Australia.",
-  // TODO: replace once the personal domain is registered.
-  url: "https://darudewayanto.com",
+  url: "https://coachdaru.belajaragile.com",
   email: "salam@hijrahcoach.co.id",
   phoneDisplay: "+62 811 1881 877",
   whatsapp: "628111881877",
