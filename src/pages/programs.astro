@@ -6,10 +6,9 @@ import PageHero from "../components/PageHero.astro";
 import Image from "../components/Img.astro";
 import Icon from "../components/Icon.astro";
 import Gallery from "../components/Gallery.astro";
-import Ventures from "../components/Ventures.astro";
 import CtaBand from "../components/CtaBand.astro";
 import { badgeImg } from "../lib/assets";
-import { services, speakingTopics, speakingFormats, programs, wa, links } from "../data/site";
+import { services, speakingTopics, programs, wa, links } from "../data/site";
 import speaking from "../assets/photos/daru-speaking.jpg";
 import entStage from "../assets/photos/daru-entrepreneur-stage.jpg";
 import startup from "../assets/photos/startup-stage.png";
@@ -20,33 +19,25 @@ const jump = [
   { href: "#speaking", n: "02", label: "Keynote Speaking" },
   { href: "#certification", n: "03", label: "Certification" },
 ];
-const steps = [
-  { title: "Conversation", text: "A free, confidential conversation about where you are and what's at stake." },
-  { title: "Discovery", text: "Stakeholder input and, where useful, MIND neuro-dominance profiling." },
-  { title: "Coaching", text: "Regular sessions with clear goals agreed with you and your organization." },
-  { title: "Review", text: "Progress measured against your goals and the feedback of the people you lead." },
-];
 const faqs = [
-  { q: "Who do you work with?", a: "CEOs, directors, founders and senior leaders, plus leadership teams going through agile transformation, from state-owned enterprises and multinationals to government institutions and family businesses." },
-  { q: "English or Bahasa Indonesia?", a: "Both. Coaching, keynotes and certification run in English or Bahasa Indonesia, in person or online." },
+  { q: "Who do you work with?", a: "Executives, directors and senior leaders, and leadership teams going through agile transformation, in state-owned enterprises, multinationals and government institutions." },
+  { q: "English or Bahasa Indonesia?", a: "Both. Coaching, keynotes and certification are available in English or Bahasa Indonesia." },
   { q: "Where do I find full program details?", a: "Corporate programs and the ACHC & CBHC certifications are detailed on the HADE website; profiling and the CHMP certification on the MyBrain Indonesia website. Every card on this page links straight to them." },
-  { q: "What does it cost?", a: "Every engagement is scoped to your goals and the number of people involved. Start with a conversation and you'll receive a clear proposal." },
+  { q: "What does it cost?", a: "Fees depend on the program and the number of participants. Send a message and we will share a proposal." },
 ];
 ---
 <Base title="Programs" description="Coaching & advisory, keynote speaking and internationally accredited coaching certification with Coach Daru Dewayanto, MCC, ICE-AC.">
-  <PageHero eyebrow="Programs" title="Three ways to work with Coach Daru" lead="Coach your leaders, inspire your stage, or certify your people as coaches. Every program is backed by HADE and MyBrain, where you'll find the full details." image={speaking} alt="" position="50% 25%">
+  <PageHero eyebrow="Programs" title="Coaching, Speaking & Certification" lead="Programs are delivered through HADE and MyBrain Indonesia. Each section links to the full details." image={speaking} alt="" position="50% 25%">
     <nav class="jump" aria-label="Program sections">
       {jump.map((j) => <a href={j.href}><span>{j.n}</span>{j.label}</a>)}
     </nav>
   </PageHero>
 
-  <Ventures tone="off" eyebrow="" title="Founder & Program Designer" />
 
   <!-- 01 COACHING & ADVISORY -->
   <section id="coaching" class="section">
     <div class="wrap">
       <header class="sec-head" data-reveal>
-        <span class="eyebrow">01 · For leaders & organizations</span>
         <h2 class="h2 caps">Coaching & Advisory</h2>
         <hr class="rule" />
         <p class="lead">With an ICF Master Certified Coach and ICAgile Certified Expert in Agile Coaching, for leaders and organizations ready to change how they work.</p>
@@ -67,30 +58,24 @@ const faqs = [
         ))}
       </div>
 
-      <ol class="steps" role="list" data-reveal>
-        {steps.map((st, i) => (
-          <li><span class="n">Step 0{i + 1}</span><strong>{st.title}</strong><p class="small muted">{st.text}</p></li>
-        ))}
-      </ol>
     </div>
   </section>
 
   <!-- 02 KEYNOTE SPEAKING -->
-  <section id="speaking" class="speak dark grain">
+  <section id="speaking" class="speak dark">
     <div class="speak-grid">
       <div class="speak-photo media">
         <Image src={speaking} alt="Coach Daru delivering a keynote" widths={[700, 1000, 1333]} sizes="(min-width: 900px) 40vw, 100vw" style="object-position: 50% 30%" />
       </div>
       <div class="speak-copy section" data-reveal>
-        <span class="eyebrow">02 · Keynote speaker</span>
         <h2 class="h2 caps">Keynote Speaking</h2>
         <hr class="rule" />
         <ol class="topics" role="list">
           {speakingTopics.map((t, i) => (
-            <li><span class="n">0{i + 1}</span><span><strong>{t.title}</strong><br /><span class="small">{t.text}</span></span></li>
+            <li><span><strong>{t.title}</strong><br /><span class="small">{t.text}</span></span></li>
           ))}
         </ol>
-        <p class="formats small">{speakingFormats.map((f) => f.title).join(" · ")} · English or Bahasa Indonesia</p>
+        <p class="formats small">In English or Bahasa Indonesia</p>
         <div class="btn-row">
           <a class="btn btn-white" href={wa("speaking")} target="_blank" rel="noopener"><Icon name="whatsapp" /> Invite Coach Daru</a>
         </div>
@@ -132,12 +117,11 @@ const faqs = [
     </div>
   </section>
 
-  <section class="inhouse dark grain section">
+  <section class="inhouse dark section">
     <div class="wrap-narrow center" data-reveal>
-      <span class="eyebrow">For organizations</span>
       <h2 class="h2">In-house programs for your leaders</h2>
       <hr class="rule" />
-      <p class="lead">Coaching, transformation and certification delivered privately for your executives, corporate-university faculty or internal coaches, as Telkom Group and Pertamina have done across dozens of batches.</p>
+      <p class="lead">Coaching, transformation and certification delivered privately for your executives, corporate-university faculty or internal coaches, as Telkom Group (30 batches) and Pertamina Group (10 batches) have done.</p>
       <div class="btn-row">
         <a class="btn btn-white" href={wa("transformation")} target="_blank" rel="noopener">Discuss an In-house Program</a>
         <a class="btn btn-ghost-light" href={links.hadeCorporate} target="_blank" rel="noopener">HADE Corporate Solutions <Icon name="arrow-up-right" /></a>
@@ -148,7 +132,6 @@ const faqs = [
   <section class="faq section">
     <div class="wrap-narrow">
       <header class="sec-head center" data-reveal>
-        <span class="eyebrow">Questions</span>
         <h2 class="h2">Frequently asked</h2>
       </header>
       <div class="qs">
@@ -188,11 +171,7 @@ const faqs = [
   .svc li { display: flex; gap: 0.6rem; align-items: baseline; font-size: var(--fs-small); }
   .svc li :global(svg) { flex: none; color: var(--greige-deep); transform: translateY(2px); }
   .svc-links { display: flex; flex-wrap: wrap; gap: 1.4rem; margin-top: 0.8rem; }
-  .steps { display: grid; gap: 1.5rem; margin-top: 3rem; }
-  .steps li { display: grid; gap: 0.3rem; padding-top: 1rem; border-top: 1px solid var(--ink); }
-  .steps .n { font-size: var(--fs-micro); font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
-  .steps strong { font-family: var(--serif); font-weight: 400; font-size: 1.2rem; }
-  @media (min-width: 900px) { .svc-grid { grid-template-columns: repeat(3, 1fr); } .steps { grid-template-columns: repeat(4, 1fr); } }
+  @media (min-width: 900px) { .svc-grid { grid-template-columns: repeat(3, 1fr); } }
 
   /* 02 Speaking */
   #speaking, #certification { scroll-margin-top: 70px; }

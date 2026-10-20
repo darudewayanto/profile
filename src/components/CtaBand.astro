@@ -6,19 +6,18 @@ import window_ from "../assets/photos/daru-window.jpg";
 
 interface Props { title?: string; text?: string; topic?: WaTopic; button?: string }
 const {
-  title = "Let's Have a Conversation",
-  text = "Every engagement starts with an honest conversation about where you are and where you want to lead. No pitch, no obligation.",
+  title = "Let's Talk",
+  text = "Send a WhatsApp message about coaching, a keynote or an in-house program, and we will reply with the next steps.",
   topic = "general",
   button = "Schedule a Consultation",
 } = Astro.props;
 ---
-<section class="cta dark grain">
+<section class="cta dark">
   <div class="wrap grid">
     <div class="photo media" data-reveal>
       <Image src={window_} alt="Coach Daru Dewayanto standing by a window" widths={[420, 840]} sizes="(min-width: 900px) 420px, 80vw" />
     </div>
     <div class="copy" data-reveal style="--d:.1s">
-      <span class="eyebrow">Start here</span>
       <h2 class="h2">{title}</h2>
       <hr class="rule" />
       <p class="lead">{text}</p>

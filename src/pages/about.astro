@@ -13,7 +13,7 @@ import entStage from "../assets/photos/daru-entrepreneur-stage.jpg";
 import city from "../assets/photos/city.png";
 ---
 <Base title="About" description="The story of Daru Dewayanto: corporate leader, entrepreneur and the first holder of three master agile coach credentials in Asia & Australia.">
-  <PageHero eyebrow="About Coach Daru" title="Thirty years of leading, building and coaching" lead="Corporate leader. Entrepreneur. Master coach. The first and only holder of three board master agile coach credentials in Asia & Australia." image={city} alt="" position="center" />
+  <PageHero eyebrow="About Coach Daru" title="30+ years as corporate leader, entrepreneur and coach" lead="The first and only holder of three board master agile coach credentials in Asia & Australia." image={city} alt="" position="center" />
 
   <section class="intro section">
     <div class="wrap grid">
@@ -26,7 +26,7 @@ import city from "../assets/photos/city.png";
         <p class="role">{site.role}<br /><span class="muted">Indonesia · Hong Kong · Qatar · Australia</span></p>
         <hr class="rule" />
         <div class="stack lead">
-          <p>Before I ever coached anyone, I spent two decades leading teams in corporations and building my own businesses. I know what it feels like to carry a target, a team and a family's livelihood at the same time, and that is still the lens I bring to every conversation.</p>
+          <p>I have more than 30 years of experience as a corporate leader and entrepreneur, and I have worked as a coach since 2011.</p>
           <p>Since 2011 I've coached more than 1,000 companies, executives and business owners, and delivered over 5,000 hours of training, coaching and mentoring. In 2017 I turned that practice into HADE, an internationally accredited agile coaching firm that today spans 28 firms and 180 associate coaches.</p>
           <p>I hold the ICF Master Certified Coach (MCC), the ICAgile Certified Expert in Agile Coaching (ICE-AC) and the MIND Master Practitioner credential, the first person in Asia & Australia to hold all three. I also design and lead three internationally accredited coaching certification programs.</p>
         </div>
@@ -35,7 +35,7 @@ import city from "../assets/photos/city.png";
     </div>
   </section>
 
-  <section class="stats darker grain section-tight">
+  <section class="stats darker section-tight">
     <dl class="wrap stats-grid">
       {stats.map((s) => (<div><dt class="sr-only">{s.label}</dt><dd class="num">{s.value}</dd><dd class="lbl">{s.label}</dd></div>))}
     </dl>
@@ -44,8 +44,7 @@ import city from "../assets/photos/city.png";
   <section class="journey section off">
     <div class="wrap">
       <div class="center wrap-narrow" data-reveal>
-        <span class="eyebrow">The journey</span>
-        <h2 class="h2 caps">From Practice to Platform</h2>
+        <h2 class="h2 caps">Career Timeline</h2>
         <hr class="rule" />
       </div>
       <ol class="timeline" role="list">
@@ -118,8 +117,9 @@ import city from "../assets/photos/city.png";
 </Base>
 
 <style>
-  .grid { display: grid; gap: clamp(2.5rem, 5vw, 6rem); align-items: start; }
+  .grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(2.5rem, 5vw, 6rem); align-items: start; }
   .photo { background: #fff; max-width: 460px; }
+  img.photo, .photo :global(img) { width: 100%; height: auto; }
   .copy > * + * { margin-top: 1.2rem; }
   .role { font-size: var(--fs-small); font-weight: 500; line-height: 1.7; }
   .copy .signature { margin-top: 2rem; }

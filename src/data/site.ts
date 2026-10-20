@@ -98,7 +98,7 @@ export const services = [
     icon: "coach",
     title: "Executive & Agile Leadership Coaching",
     short: "1-on-1 coaching for executives, founders and senior leaders leading change.",
-    text: "Private coaching with an ICF Master Certified Coach for leaders who carry the weight of transformation. We work on how you think, decide and lead, so your team follows the change instead of resisting it.",
+    text: "1-on-1 coaching with an ICF Master Certified Coach for executives and senior leaders responsible for an agile transformation.",
     items: [
       "1-on-1 executive coaching",
       "Leader as agile coach",
@@ -113,7 +113,7 @@ export const services = [
     icon: "transform",
     title: "Agile Transformation & Advisory",
     short: "Business agility for organizations, from leadership alignment to scaled agility.",
-    text: "Through HADE and Center of Agility, Coach Daru guides boards and leadership teams through agile transformation: assessing where you are, aligning leaders and mindset, and building an internal coaching culture that lasts.",
+    text: "Through HADE and Center of Agility, Coach Daru works with leadership teams on agile transformation: business agility assessment, leader and mindset alignment, and internal coaching culture.",
     items: [
       "Agile leader & mindset alignment",
       "Business Agility Assessment & Agile Health Check-up",
@@ -128,7 +128,7 @@ export const services = [
     icon: "brain",
     title: "Leader & Team Profiling",
     short: "Applied-neuroscience profiling that shows how leaders and teams think.",
-    text: "As a MIND Master Practitioner, Coach Daru uses the MyBrain Indicator of Neurological Dominance to reveal how a leader or a team processes information, makes decisions and finds energy, then turns it into a coaching plan.",
+    text: "As a MIND Master Practitioner, Coach Daru uses the MyBrain Indicator of Neurological Dominance to profile how a leader or a team processes information and makes decisions.",
     items: [
       "1-on-1 leader profiling & debrief",
       "Team profiling & team dynamics",
@@ -141,37 +141,15 @@ export const services = [
 ];
 
 export const speakingTopics = [
-  {
-    title: "Agility Begins With the Leader",
-    text: "Why transformations stall at the top, and the mindset shift leaders need before any framework works.",
-  },
-  {
-    title: "The Leader as Agile Coach",
-    text: "Practical coaching skills that let managers lead change by asking, not just telling.",
-  },
-  {
-    title: "Your Brain at Work",
-    text: "Applied neuroscience for decision-making, collaboration and energy in high-pressure teams.",
-  },
-  {
-    title: "Building a Coaching Culture",
-    text: "How organizations like Telkom and Pertamina grew internal coaches and faculty at scale.",
-  },
-  {
-    title: "AI and the Future of Learning",
-    text: "Lessons from building HADE AI: using large language models to keep people learning between sessions.",
-  },
-  {
-    title: "Entrepreneurship With Purpose",
-    text: "Three decades as corporate leader and entrepreneur: growing a regional firm from a single practice.",
-  },
-];
+  { title: "Agile Leadership", text: "Leading an agile transformation as a senior leader." },
+  { title: "The Leader as Agile Coach", text: "Coaching skills for managers, from the ICP-ACC program Coach Daru designed and teaches." },
+  { title: "Applied Neuroscience", text: "MIND neuro-dominance profiling for leaders and teams, with MyBrain International." },
+  { title: "Building a Coaching Culture", text: "Experience from in-house programs with Telkom Group and Pertamina Group." },
+  { title: "AI for Learning", text: "Building HADE AI, a Startup World Cup Top 10 finalist." },
+  { title: "Entrepreneurship", text: "30+ years as a corporate leader and entrepreneur." },
+]
 
-export const speakingFormats = [
-  { title: "Keynote", text: "45 to 60 minutes for conferences, leadership summits and company gatherings." },
-  { title: "Executive Workshop", text: "Half-day or full-day, interactive sessions for boards and leadership teams." },
-  { title: "Panel & Fireside", text: "Moderated conversations on leadership, agility, coaching and AI." },
-];
+export const speakingFormats: { title: string; text: string }[] = [];
 
 export const programs = [
   {
@@ -210,7 +188,7 @@ export const ventures = [
   {
     logo: "hijrah-coach",
     name: "Hijrah Coach Group",
-    text: "The parent group: 27 coaching firms, 180 associate coaches and 1,800 graduate coaches, with subsidiaries and partners from Indonesia to the Gulf.",
+    text: "The parent group: 28 coaching firms, 180 associate coaches and 1,800 graduate coaches, with subsidiaries and partners from Indonesia to the Gulf.",
     href: "",
   },
   {
@@ -249,7 +227,7 @@ export const journey = [
   {
     period: "Before 2011",
     title: "Corporate leader & entrepreneur",
-    text: "Two decades leading in corporations and building businesses, the experience every coaching conversation still draws on.",
+    text: "Years in corporate leadership and in building businesses, before starting a coaching practice in 2011.",
   },
   {
     period: "2011 – 2016",

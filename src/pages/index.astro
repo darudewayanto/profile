@@ -31,7 +31,7 @@ const isWide = (key: string) => badgeImg[key].width / badgeImg[key].height > 1.5
       <p class="hero-why">Agility has to start with us, and real transformation is led by us.</p>
       <p class="lead">
         I'm Daru Dewayanto. For more than 30 years as a corporate leader, entrepreneur and master coach, I've helped
-        executives and organizations across Asia, the Middle East and Australia lead change that actually holds.
+        executives and organizations across Asia, the Middle East and Australia lead agile transformation.
       </p>
       <div class="btn-row">
         <a class="btn btn-white" href={wa("general")} target="_blank" rel="noopener">Schedule a Consultation</a>
@@ -64,8 +64,7 @@ const isWide = (key: string) => badgeImg[key].width / badgeImg[key].height > 1.5
   <section class="about greige">
     <div class="about-grid">
       <div class="about-card" data-reveal>
-        <span class="eyebrow">About</span>
-        <h2 class="h1 caps">Daru<br />Dewayanto</h2>
+                <h2 class="h1 caps">Daru<br />Dewayanto</h2>
         <p class="tiny-caps">{site.postnominals}</p>
         <div class="stack" style="--stack:1rem">
           <p>
@@ -75,8 +74,7 @@ const isWide = (key: string) => badgeImg[key].width / badgeImg[key].height > 1.5
           </p>
           <p>
             I design and lead three internationally accredited certification programs, and I've trained and certified more
-            than 1,800 coaches and practitioners. But the work I love most is still the one-on-one conversation with a
-            leader who is ready to grow.
+            than 1,800 coaches and practitioners.
           </p>
         </div>
         <p class="signature">Daru Dewayanto</p>
@@ -89,7 +87,7 @@ const isWide = (key: string) => badgeImg[key].width / badgeImg[key].height > 1.5
   </section>
 
   <!-- STATS -->
-  <section class="stats darker grain section-tight">
+  <section class="stats darker section-tight">
     <dl class="wrap stats-grid">
       {stats.map((s, i) => (
         <div data-reveal style={`--d:${i * 0.08}s`}>
@@ -106,17 +104,15 @@ const isWide = (key: string) => badgeImg[key].width / badgeImg[key].height > 1.5
   <!-- SERVICES -->
   <section class="services section">
     <div class="wrap-narrow center" data-reveal>
-      <span class="eyebrow">How I help</span>
-      <h2 class="h2 caps">Coaching That Delivers Results</h2>
+            <h2 class="h2 caps">How I Work With Leaders</h2>
       <hr class="rule" />
       <p class="lead">
-        Whether you lead a team, a company or a national transformation, the work starts with you and the way you lead.
+        Executive coaching, agile transformation advisory and leader profiling, delivered through HADE and MyBrain Indonesia.
       </p>
     </div>
     <div class="wrap svc-grid">
       {services.map((s, i) => (
-        <a class="svc dark grain" href={u(`/programs#${s.id}`)} data-reveal style={`--d:${i * 0.1}s`}>
-          <Icon name={s.icon} size={34} />
+        <a class="svc dark" href={u(`/programs#${s.id}`)} data-reveal style={`--d:${i * 0.1}s`}>
           <h3 class="h3 caps">{s.title}</h3>
           <hr class="rule center" />
           <p>{s.short}</p>
@@ -133,16 +129,15 @@ const isWide = (key: string) => badgeImg[key].width / badgeImg[key].height > 1.5
         <Image src={speaking} alt="Coach Daru delivering a keynote on stage" widths={[700, 1000, 1333]} sizes="(min-width: 900px) 45vw, 100vw" style="object-position: 50% 30%" />
       </div>
       <div class="speak-copy section" data-reveal>
-        <span class="eyebrow">Keynote speaker</span>
-        <h2 class="h2">Talks that move leaders from insight to action</h2>
+                <h2 class="h2">Speaking Topics</h2>
         <hr class="rule" />
         <ol class="topics" role="list">
           {speakingTopics.slice(0, 4).map((t, i) => (
-            <li><span class="n">0{i + 1}</span><span>{t.title}</span></li>
+            <li><span>{t.title}</span></li>
           ))}
         </ol>
         <div class="btn-row">
-          <a class="btn btn-solid" href={u("/programs#speaking")}>Speaking Topics</a>
+          <a class="btn btn-solid" href={u("/programs#speaking")}>All Topics</a>
           <a class="btn" href={wa("speaking")} target="_blank" rel="noopener">Invite Coach Daru</a>
         </div>
       </div>
@@ -153,8 +148,7 @@ const isWide = (key: string) => badgeImg[key].width / badgeImg[key].height > 1.5
   <section class="creds section">
     <div class="wrap">
       <div class="center wrap-narrow" data-reveal>
-        <span class="eyebrow">Internationally accredited</span>
-        <h2 class="h2 caps">Credentials & Accreditation</h2>
+                <h2 class="h2 caps">Credentials & Accreditation</h2>
         <hr class="rule" />
       </div>
 
@@ -198,14 +192,13 @@ const isWide = (key: string) => badgeImg[key].width / badgeImg[key].height > 1.5
   </section>
 
   <!-- AWARDS -->
-  <section class="awards dark grain section">
+  <section class="awards dark section">
     <div class="wrap awards-grid">
       <div class="award-photo media" data-reveal>
         <Image src={award100} alt="Coach Daru receiving the 100 Best Global Coaching Leader award" width={666} />
       </div>
       <div data-reveal style="--d:.1s">
-        <span class="eyebrow">Recognition</span>
-        <h2 class="h2">Award-winning, on the global stage</h2>
+                <h2 class="h2">Awards</h2>
         <hr class="rule" />
         <ul class="award-list" role="list">
           {awards.map((a) => (

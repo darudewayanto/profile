@@ -6,7 +6,7 @@ import { site } from "../data/site";
 interface Props { title?: string }
 const { title = "Tell me what you're working on" } = Astro.props;
 ---
-<section class="band darker grain">
+<section class="band darker">
   <form class="wrap inner" data-wa-form data-number={site.whatsapp}>
     <h2 class="caps">{title}</h2>
     <label class="field">
